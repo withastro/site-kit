@@ -1,8 +1,16 @@
 {
     "name": "@astrojs/site-kit",
-    "description": "Styles, components, and tooling config for use in *.astro.build websites",
     "version": "0.0.0",
+    "description": "Styles, components, and tooling config for use in *.astro.build websites",
     "type": "module",
+    "author": "withastro",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/withastro/site-kit.git"
+    },
+    "bugs": "https://github.com/withastro/site-kit/issues",
+    "homepage": "https://github.com/withastro/site-kit#readme",
     "exports": {
         "./components/*": "./components/*",
         "./layouts/*": "./layouts/*",
@@ -20,16 +28,6 @@
         "tailwind.preset.cjs",
         "tsconfig.json"
     ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/withastro/site-kit.git"
-    },
-    "author": "withastro",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/withastro/site-kit/issues"
-    },
-    "homepage": "https://github.com/withastro/site-kit#readme",
     "scripts": {
         "format": "run-s format:*",
         "format:prettier": "prettier -w --plugin-search-dir=. .",
@@ -51,5 +49,6 @@
         "prettier-plugin-astro": "^0.5.5",
         "smartypants": "^0.1.6",
         "tailwindcss": "^3.1.8"
-    }
+    },
+    "packageManager": "pnpm@7.12.2"
 }
