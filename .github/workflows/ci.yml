@@ -16,17 +16,35 @@ jobs:
     name: Publish Packages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2.2.1
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: actions/setup-node@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.1
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
         with:
-          node-version: 16
-          cache: 'pnpm'
-      - if: ${{ steps.cache-node.outputs.cache-hit != 'true' }}
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          retorekeys: |
+            ${{ runner.os }}-pnpm-store-
+      
+      - name: Install dependencies
         run: pnpm install
-      - uses: changesets/action@v1
+
+      - name: Publish release
+        uses: changesets/action@v1
         with:
           node-version: 16
           publish: pnpm changeset publish
