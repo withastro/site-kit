@@ -1,0 +1,35 @@
+---
+import BaseHead, { Props as BaseHeadProps } from '../components/BaseHead.astro'
+
+export interface Props extends Exclude<BaseHeadProps, 'title'> {
+    title?: string
+    lang?: string
+    class?: string
+}
+
+const { lang = 'en', class: className = '', ...head } = Astro.props as Props
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+    <head>
+        <BaseHead {...head} />
+    </head>
+
+    <body>
+        <div class="relative overflow-hidden min-h-screen flex flex-col">
+            <slot name="header" />
+
+            <main class:list={['flex-1', className]}>
+                <slot />
+            </main>
+
+            <slot name="footer" />
+        </div>
+        <style>
+            body {
+                @apply bg-neutral-50 text-neutral-900;
+            }
+        </style>
+    </body>
+</html>

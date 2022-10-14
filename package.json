@@ -1,0 +1,53 @@
+{
+    "name": "@astrojs/site-kit",
+    "version": "0.0.1",
+    "type": "module",
+    "exports": {
+        "./components/*": "./components/*",
+        "./layouts/*": "./layouts/*",
+        "./eslint": "./.eslintrc.cjs",
+        "./prettier": "./.prettierrc.cjs",
+        "./tailwind": "./tailwind.preset.cjs",
+        "./typescript": "./tsconfig.json"
+    },
+    "files": [
+        "components",
+        "layouts",
+        ".eslintrc.js",
+        ".prettierrc.cjs",
+        "postcss.config.cjs",
+        "tailwind.preset.cjs",
+        "tsconfig.json"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/withastro/site-kit.git"
+    },
+    "author": "withastro",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/withastro/site-kit/issues"
+    },
+    "homepage": "https://github.com/withastro/site-kit#readme",
+    "scripts": {
+        "format": "run-s format:*",
+        "format:prettier": "prettier -w --plugin-search-dir=. .",
+        "format:eslint": "eslint --fix \"**/*.astro\""
+    },
+    "devDependencies": {
+        "@astrojs/image": "^0.10.0",
+        "@tailwindcss/aspect-ratio": "^0.4.2",
+        "@tailwindcss/line-clamp": "^0.4.2",
+        "@tailwindcss/typography": "^0.5.7",
+        "@typescript-eslint/parser": "^5.40.0",
+        "astro": "^1.5.0",
+        "eslint": "^8.25.0",
+        "eslint-plugin-astro": "^0.20.0",
+        "eslint-plugin-jsx-a11y": "^6.6.1",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^2.7.1",
+        "prettier-plugin-astro": "^0.5.5",
+        "smartypants": "^0.1.6",
+        "tailwindcss": "^3.1.8"
+    }
+}
