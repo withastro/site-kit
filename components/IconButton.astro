@@ -1,0 +1,19 @@
+---
+import { Icon } from 'astro-icon'
+
+export interface Props extends astroHTML.JSX.HTMLAttributes {
+    iconName: string
+    label: string
+}
+
+const { iconName, label, class: className = '', ...attrs } = Astro.props
+---
+
+<button
+    type="button"
+    class:list={[className, 'rounded-md p-2 inline-flex items-center justify-center hover:bg-neutral-600 hover:text-neutral-100 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-neutral-50']}
+    aria-label={label}
+    {...attrs}
+>
+    <Icon name={iconName} size={24} aria-hidden="true" />
+</button>
