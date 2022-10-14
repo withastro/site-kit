@@ -1,6 +1,6 @@
 {
     "name": "@astrojs/site-kit",
-    "version": "0.0.1",
+    "version": "0.0.0",
     "type": "module",
     "exports": {
         "./components/*": "./components/*",
@@ -36,6 +36,7 @@
     },
     "devDependencies": {
         "@astrojs/image": "^0.10.0",
+        "@changesets/cli": "^2.25.0",
         "@tailwindcss/aspect-ratio": "^0.4.2",
         "@tailwindcss/line-clamp": "^0.4.2",
         "@tailwindcss/typography": "^0.5.7",
