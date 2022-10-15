@@ -1,0 +1,40 @@
+---
+import { Sprite } from 'astro-icon'
+import Show from './Show.astro'
+
+export interface Link {
+    href: string
+    text: string
+}
+
+export interface Props {
+    links: Link[]
+}
+
+const { links = [] } = Astro.props
+---
+
+<footer class="bg-neutral-900">
+    <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <nav
+            class="-mx-5 -my-2 flex flex-wrap justify-center"
+            aria-label="Footer"
+        >
+            {links.map(({ href, text }) => (
+                <div class="px-5 py-2 text-center">
+                    <a
+                        href={href}
+                        class="text-base text-neutral-300 hover:text-neutral-100 hover:underline"
+                    >
+                        {text}
+                    </a>
+                </div>
+            ))}
+        </nav>
+        <Show when={Astro.slots.has('end')}>
+            <div class="mt-8 flex justify-center space-x-6">
+                <slot name="end" />
+            </div>
+        </Show>
+    </div>
+</footer>
