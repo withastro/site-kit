@@ -13,6 +13,7 @@
     "homepage": "https://github.com/withastro/site-kit#readme",
     "exports": {
         "./components/*": "./components/*",
+        "./icons/*": "./icons/*",
         "./layouts/*": "./layouts/*",
         "./eslint": "./.eslintrc.cjs",
         "./prettier": "./.prettierrc.cjs",
@@ -21,6 +22,7 @@
     },
     "files": [
         "components",
+        "icons",
         "layouts",
         ".eslintrc.js",
         ".prettierrc.cjs",

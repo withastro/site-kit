@@ -4,5 +4,19 @@ import IconButton from './IconButton.astro'
 ---
 
 <ClickToggle target=":root" attribute="data-menu-open">
-  <IconButton id="menubtn" iconName="heroicons-outline:menu" label="Toggle navigation menu" />
+  <IconButton id="menubtn" iconName="heroicons-outline:menu" label="Toggle navigation menu" aria-expanded="false" />
 </ClickToggle>
+
+<script>
+  const menubtn = document.getElementById('menubtn')
+
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes') {
+        menubtn?.setAttribute('aria-expanded', document.documentElement.getAttribute('data-menu-open') || 'false')
+      }
+    })
+  })
+
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-menu-open'] })
+</script>
