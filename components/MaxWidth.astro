@@ -1,15 +1,16 @@
 ---
 export interface Props extends astroHTML.JSX.HTMLAttributes {
-    as: any
+    as?: any
+    small?: boolean
 }
 
-const { as: Component = 'section', class: className = '', ...props } = Astro.props as Props
+const { as: Component = 'section', small = false, class: className = '', ...props } = Astro.props as Props
 ---
 
 <Component
     class:list={[
         className,
-        'max-w-7xl',
+        small ? 'max-w-4xl' : 'max-w-7xl',
         'mx-auto',
         'px-4',
         'sm:px-6',
