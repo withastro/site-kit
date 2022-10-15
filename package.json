@@ -1,6 +1,6 @@
 {
     "name": "@astrojs/site-kit",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "Styles, components, and tooling config for use in *.astro.build websites",
     "type": "module",
     "author": "withastro",
