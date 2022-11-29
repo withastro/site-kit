@@ -9,13 +9,10 @@ const { each } = Astro.props
 ---
 
 {
-    (async function* () {
-        for await (const value of each) {
-            let html = await Astro.slots.render('default', [value])
-            yield <Fragment set:html={html} />
-            yield '\n'
-        }
-    })()
+    each.map(async (value: unknown) => {
+        const html = await Astro.slots.render('default', [value])
+        return <Fragment set:html={html} />
+    })
 }
 
 <Show when={!each.length}>
