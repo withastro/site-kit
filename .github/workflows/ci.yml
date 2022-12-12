@@ -46,13 +46,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Publish release
-        uses: changesets/action@v1
-        with:
-          node-version: 16
-          publish: pnpm changeset publish
-          commit: '[ci] release'
-          title: '[ci] release'
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Lint
+        run: pnpm lint
