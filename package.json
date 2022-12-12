@@ -1,57 +1,55 @@
 {
-    "name": "@astrojs/site-kit",
-    "version": "0.0.0",
-    "description": "Styles, components, and tooling config for use in *.astro.build websites",
-    "type": "module",
-    "author": "withastro",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/withastro/site-kit.git"
-    },
-    "bugs": "https://github.com/withastro/site-kit/issues",
-    "homepage": "https://github.com/withastro/site-kit#readme",
-    "exports": {
-        "./components/*": "./components/*",
-        "./icons/*": "./icons/*",
-        "./layouts/*": "./layouts/*",
-        "./eslint": "./.eslintrc.cjs",
-        "./prettier": "./.prettierrc.cjs",
-        "./tailwind": "./tailwind.preset.cjs",
-        "./typescript": "./tsconfig.json"
-    },
-    "files": [
-        "components",
-        "icons",
-        "layouts",
-        ".eslintrc.js",
-        ".prettierrc.cjs",
-        "postcss.config.cjs",
-        "tailwind.preset.cjs",
-        "tsconfig.json"
-    ],
-    "scripts": {
-        "format": "run-s format:*",
-        "format:prettier": "prettier -w --plugin-search-dir=. .",
-        "format:eslint": "eslint --fix \"**/*.astro\""
-    },
-    "devDependencies": {
-        "@astrojs/image": "^0.10.0",
-        "@changesets/cli": "^2.25.0",
-        "@tailwindcss/aspect-ratio": "^0.4.2",
-        "@tailwindcss/line-clamp": "^0.4.2",
-        "@tailwindcss/typography": "^0.5.7",
-        "@typescript-eslint/parser": "^5.40.0",
-        "astro": "^1.5.0",
-        "astro-icon": "^0.7.3",
-        "eslint": "^8.25.0",
-        "eslint-plugin-astro": "^0.20.0",
-        "eslint-plugin-jsx-a11y": "^6.6.1",
-        "npm-run-all": "^4.1.5",
-        "prettier": "^2.7.1",
-        "prettier-plugin-astro": "^0.5.5",
-        "smartypants": "^0.1.6",
-        "tailwindcss": "^3.1.8"
-    },
-    "packageManager": "pnpm@7.12.2"
+  "name": "@astrojs/site-kit",
+  "version": "0.0.0",
+  "description": "Styles, components, and tooling config for use in *.astro.build websites",
+  "type": "module",
+  "author": "withastro",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/withastro/site-kit.git"
+  },
+  "bugs": "https://github.com/withastro/site-kit/issues",
+  "homepage": "https://github.com/withastro/site-kit#readme",
+  "exports": {
+    "./components/*": "./components/*",
+    "./icons/*": "./icons/*",
+    "./eslint": "./.eslintrc.cjs",
+    "./prettier": "./.prettierrc.cjs",
+    "./typescript": "./tsconfig.json"
+  },
+  "files": [
+    "components",
+    "icons",
+    "layouts",
+    ".eslintrc.js",
+    ".prettierrc.cjs",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "format": "run-s format:*",
+    "format:prettier": "prettier -w --plugin-search-dir=. .",
+    "format:eslint": "eslint --fix \"**/*.astro\"",
+    "lint": "run-s format:*",
+    "lint:prettier": "prettier --plugin-search-dir=. .",
+    "lint:eslint": "eslint \"**/*.astro\""
+  },
+  "dependencies": {
+    "@astrojs/image": "^0.10.0",
+    "astro": "^1.5.0",
+    "smartypants": "^0.1.6"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.25.0",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.40.0",
+    "eslint": "^8.25.0",
+    "eslint-plugin-astro": "^0.20.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.5.5"
+  },
+  "packageManager": "pnpm@7.12.2"
 }
