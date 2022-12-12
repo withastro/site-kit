@@ -31,7 +31,7 @@
         "format:prettier": "prettier -w --plugin-search-dir=. .",
         "format:eslint": "eslint --fix \"**/*.astro\""
     },
-    "devDependencies": {
+    "dependencies": {
         "@astrojs/image": "^0.10.0",
         "@changesets/cli": "^2.25.0",
         "@typescript-eslint/parser": "^5.40.0",
