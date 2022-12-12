@@ -1,16 +1,22 @@
 ---
-export interface AttributeProps {
+interface BaseProps {
   target?: string
   storageKey?: string
+}
+export interface AttributeProps extends BaseProps {
   attribute: string
   on?: string
   off?: string
+  classname: never
 }
-export interface ClassProps {
-  target?: string
+export interface ClassProps extends BaseProps {
   classname: string
+  attribute: never
+  on: never
+  off: never
 }
 export type Props = AttributeProps | ClassProps
+
 const { target, storageKey, attribute, on, off, classname } = Astro.props
 ---
 
