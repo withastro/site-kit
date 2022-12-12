@@ -1,80 +1,80 @@
 ---
 interface BaseProps {
-  target?: string
-  storageKey?: string
+	target?: string;
+	storageKey?: string;
 }
 export interface AttributeProps extends BaseProps {
-  attribute: string
-  on?: string
-  off?: string
-  classname: never
+	attribute: string;
+	on?: string;
+	off?: string;
+	classname: never;
 }
 export interface ClassProps extends BaseProps {
-  classname: string
-  attribute: never
-  on: never
-  off: never
+	classname: string;
+	attribute: never;
+	on: never;
+	off: never;
 }
-export type Props = AttributeProps | ClassProps
+export type Props = AttributeProps | ClassProps;
 
-const { target, storageKey, attribute, on, off, classname } = Astro.props
+const { target, storageKey, attribute, on, off, classname } = Astro.props;
 ---
 
 <click-toggle
-  data-target={target}
-  data-storage={storageKey}
-  data-attr={attribute}
-  data-on={on}
-  data-off={off}
-  data-class={classname}
+	data-target={target}
+	data-storage={storageKey}
+	data-attr={attribute}
+	data-on={on}
+	data-off={off}
+	data-class={classname}
 >
-  <slot />
+	<slot />
 </click-toggle>
 
 <script>
-  class ClickToggle extends HTMLElement {
-    #onClick = this.toggle.bind(this)
-    connectedCallback() {
-      this.addEventListener('click', this.#onClick, true)
+	class ClickToggle extends HTMLElement {
+		#onClick = this.toggle.bind(this);
+		connectedCallback() {
+			this.addEventListener('click', this.#onClick, true);
 
-      const target = 'target' in this.dataset ? document.querySelector(this.dataset.target!) : this
-      const attr = this.dataset.attr
-      const off = this.dataset.off || 'false'
+			const target = 'target' in this.dataset ? document.querySelector(this.dataset.target!) : this;
+			const attr = this.dataset.attr;
+			const off = this.dataset.off || 'false';
 
-      if (target && attr && !target.getAttribute(attr)) {
-        target.setAttribute(attr, off)
-      }
-    }
-    disconnectedCallback() {
-      this.removeEventListener('click', this.#onClick)
-    }
-    get target(): keyof HTMLElementTagNameMap | undefined {
-      return this.getAttribute('target') as keyof HTMLElementTagNameMap | undefined
-    }
-    toggle() {
-      !!this.dataset.attr ? this.toggleAttr() : this.toggleClass()
-    }
-    toggleClass() {
-      const target = 'target' in this.dataset ? document.querySelector(this.dataset.target!) : this
-      if (!target || !this.dataset.class) {
-        return
-      }
-      target.classList.toggle(this.dataset.class)
-    }
-    toggleAttr() {
-      const target = 'target' in this.dataset ? document.querySelector(this.dataset.target!) : this
-      const attr = this.dataset.attr
-      if (!target || !attr) {
-        return
-      }
-      const off = this.dataset.off || 'false'
-      const on = this.dataset.on || 'true'
-      const value = target.getAttribute(attr) == off ? on : off
-      target.setAttribute(attr, value)
-      if (this.dataset.storage) {
-        localStorage.setItem(this.dataset.storage, value)
-      }
-    }
-  }
-  customElements.define('click-toggle', ClickToggle)
+			if (target && attr && !target.getAttribute(attr)) {
+				target.setAttribute(attr, off);
+			}
+		}
+		disconnectedCallback() {
+			this.removeEventListener('click', this.#onClick);
+		}
+		get target(): keyof HTMLElementTagNameMap | undefined {
+			return this.getAttribute('target') as keyof HTMLElementTagNameMap | undefined;
+		}
+		toggle() {
+			!!this.dataset.attr ? this.toggleAttr() : this.toggleClass();
+		}
+		toggleClass() {
+			const target = 'target' in this.dataset ? document.querySelector(this.dataset.target!) : this;
+			if (!target || !this.dataset.class) {
+				return;
+			}
+			target.classList.toggle(this.dataset.class);
+		}
+		toggleAttr() {
+			const target = 'target' in this.dataset ? document.querySelector(this.dataset.target!) : this;
+			const attr = this.dataset.attr;
+			if (!target || !attr) {
+				return;
+			}
+			const off = this.dataset.off || 'false';
+			const on = this.dataset.on || 'true';
+			const value = target.getAttribute(attr) == off ? on : off;
+			target.setAttribute(attr, value);
+			if (this.dataset.storage) {
+				localStorage.setItem(this.dataset.storage, value);
+			}
+		}
+	}
+	customElements.define('click-toggle', ClickToggle);
 </script>
