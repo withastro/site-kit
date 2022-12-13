@@ -28,16 +28,16 @@
 	--tracking-tight: -0.025em;
 	--tracking-wide: 0.025em;
 
-	/* Golden Ratio */
-	--spacer-scale: 1.618;
-	--spacer-xs: calc(var(--spacer-sm) / var(--spacer-scale));
-	--spacer-sm: calc(var(--spacer) / var(--spacer-scale));
-	--spacer: 1rem;
-	--spacer-lg: calc(var(--spacer) * var(--spacer-scale));
-	--spacer-xl: calc(var(--spacer-lg) * var(--spacer-scale));
-	--spacer-2xl: calc(var(--spacer-xl) * var(--spacer-scale));
-	--spacer-3xl: calc(var(--spacer-2xl) * var(--spacer-scale));
-	--spacer-4xl: calc(var(--spacer-3xl) * var(--spacer-scale));
+	--gap-increment: 8px;
+	--gap-0\.5: calc(var(--gap-increment) / 2);
+	--gap-1: var(--gap-increment);
+	--gap-2: calc(var(--gap-increment) * 2);
+	--gap-3: calc(var(--gap-increment) * 3);
+	--gap-4: calc(var(--gap-increment) * 4);
+	--gap-5: calc(var(--gap-increment) * 5);
+	--gap-6: calc(var(--gap-increment) * 6);
+	--gap-7: calc(var(--gap-increment) * 7);
+	--gap-8: calc(var(--gap-increment) * 8);
 }
 
 body {

@@ -17,3 +17,9 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# E2E tests
+/tests/fixture/node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/

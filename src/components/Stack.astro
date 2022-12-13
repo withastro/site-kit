@@ -31,8 +31,6 @@ const inlineStyle = id && [
     safeGap && `#${id} { gap: ${safeGap}; }`,
     splitAfter && `#${id} > :nth-child(${splitAfter}) { margin-block-end: auto; }`
 ].filter(Boolean).join('\n')
-
-console.log(attrs)
 ---
 
 <Component data-stack={recursive ? 'recursive' : ''} id={id?.toString()} class={className} {...attrs}>
