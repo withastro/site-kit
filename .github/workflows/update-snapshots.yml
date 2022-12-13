@@ -1,0 +1,80 @@
+name: Create a Snapshot Release
+
+on:
+  issue_comment:
+    types: [created]
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+  FORCE_COLOR: true
+
+jobs:
+  update-snapshots:
+    name: Updates all E2E test snapshots
+    if: ${{ github.repository_owner == 'withastro' && github.event.issue.pull_request && startsWith(github.event.comment.body, '!snapshots') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Check if user has admin access (only admins can update test snapshots)."
+        uses: "lannonbr/repo-permission-check-action@2.0.0"
+        with:
+          permission: "admin"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+
+      - name: resolve pr refs
+        id: refs
+        uses: eficode/resolve-pr-refs@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ steps.refs.outputs.head_ref }}
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.2.1
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install Playwright Browsers
+        run: pnpm dlx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: pnpm dlx playwright test --update-snapshots
+      
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
+      - name: Commit updated snapshots
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update e2e test snapshots
+
+      - name: Pull Request Notification
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '```\n' + E2E test snapshots updated + '\n```',
+            })
