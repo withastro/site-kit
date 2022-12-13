@@ -1,0 +1,79 @@
+---
+import type { HTMLAttributes, HTMLTag } from 'astro/types';
+import { parseCssLength } from '../utils/css.js';
+import type { CSSLength } from '../utils/css.js';
+import { joinStyles } from '../utils/styles.js';
+
+export interface Props extends HTMLAttributes<'div'> {
+	as?: HTMLTag;
+	style?: string;
+	justify?: 'start' | 'end' | 'center' | 'between' | 'around';
+	align?: 'start' | 'end' | 'center' | 'stretch';
+	gap?: number | CSSLength;
+}
+
+function getJustify(value: Props['justify']) {
+	switch (value) {
+		case 'end':
+			return 'flex-end';
+		case 'center':
+			return 'center';
+		case 'between':
+			return 'space-between';
+		case 'around':
+			return 'space-around';
+		case 'start':
+		default:
+			return 'flex-start';
+	}
+}
+
+function getAlign(value: Props['align']) {
+	switch (value) {
+		case 'end':
+			return 'flex-end';
+		case 'center':
+			return 'center';
+		case 'stretch':
+			return 'stretch';
+		case 'start':
+		default:
+			return 'flex-start';
+	}
+}
+
+const {
+	as: Component = 'div',
+	justify = 'start',
+	align = 'start',
+	gap,
+	style = '',
+	...props
+} = Astro.props as Props;
+
+const safeGap = parseCssLength(gap);
+const safeJustify = getJustify(justify);
+const safeAlign = getAlign(align);
+
+const componentStyle = joinStyles(
+    `gap: ${safeGap}`,
+	`justify-content: ${safeJustify}`,
+	`align-items: ${safeAlign}`,
+	style
+);
+---
+
+<Component data-cluster style={componentStyle} {...props}>
+	<slot />
+</Component>
+
+<style>
+	[data-cluster] {
+		box-sizing: border-box;
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--gap-block, var(--gap-md)) var(--gap-inline, var(--gap-md));
+		justify-content: var(--justify, 'flex-start');
+		align-items: var(--align, 'flex-align');
+	}
+</style>

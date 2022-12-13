@@ -1,4 +1,4 @@
-export function joinStyles(...values: (string | undefined)[]) {
+export function joinStyles(...values: (string | undefined | null)[]) {
 	return (
 		values
 			.filter(Boolean)
