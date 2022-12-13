@@ -1,0 +1,39 @@
+---
+import type { HTMLAttributes, HTMLTag } from 'astro/types';
+import { parseCssLength } from '../utils/css.js';
+import type { CSSLength } from '../utils/css.js';
+import { uid } from '../utils/uid.js';
+
+export interface Props extends HTMLAttributes<'div'> {
+	as?: HTMLTag;
+	minimum: CSSLength;
+}
+
+const {
+	as: Component = 'section',
+	minimum,
+	id = uid(),
+	class: className = '',
+	...attrs
+} = Astro.props;
+
+const safeMinimum = parseCssLength(minimum);
+
+const inlineStyle = `@supports (width: min(${safeMinimum}, 100%)) {
+  #${id} {
+    grid-template-columns: repeat(auto-fit, minmax(min(${safeMinimum}, 100%), 1fr));
+  }
+}`;
+---
+
+<Component class:list={['grid', className]} id={id} {...attrs}>
+	<slot />
+</Component>
+
+<style set:html={inlineStyle}></style>
+
+<style>
+	.grid {
+		display: grid;
+	}
+</style>
