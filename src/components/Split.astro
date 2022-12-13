@@ -13,10 +13,12 @@ export interface Props extends HTMLAttributes<'section'> {
 const FRACTION_PATTERN = /(?:[1-9][0-9]*|0).?\/.?[1-9][0-9]*/g;
 function getFraction(value: Props['fraction']) {
 	if (!value) {
-		return '1fr 2fr';
+		return '1fr 1fr';
 	} else if (value.match(FRACTION_PATTERN)) {
 		const [start, end] = value.split('/');
-		return `${start.trim()}fr ${end.trim()}fr`;
+		const startNum = parseInt(start)
+		const endNum = parseInt(end)
+		return `${startNum / endNum}fr ${(endNum - startNum) / endNum}fr`;
 	} else if (value === 'auto-start') {
 		return 'auto 1fr';
 	} else if (value === 'auto-end') {
@@ -30,7 +32,7 @@ const {
 	as: Component = 'section',
 	id = uid(),
 	fraction = '1/2',
-	threshold = '0px',
+	threshold = '768px',
 	class: className = '',
 	...attrs
 } = Astro.props;
@@ -56,6 +58,5 @@ const inlineStyle = `
 	.split {
 		display: grid;
 		grid-template-columns: var(--columns, 1fr);
-		gap: var(--spacer-lg);
 	}
 </style>
