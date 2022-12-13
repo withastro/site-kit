@@ -6,7 +6,7 @@ import Layout from '../../layouts/Base.astro'
 <Layout title="Cluster">
     <h1>Cluster.astro</h1>
 
-    <Cluster gap="--gap-2" class="gap-var">
+    <Cluster style="gap: var(--gap-2);" class="gap-var">
         <p>home</p>
         <p>about</p>
         <p>contact</p>
@@ -14,87 +14,7 @@ import Layout from '../../layouts/Base.astro'
 
     <hr>
 
-    <Cluster gap="2rem" class="gap-length">
-        <p>home</p>
-        <p>about</p>
-        <p>contact</p>
-    </Cluster>
-    
-    <hr>
-
-    <Cluster gap={20} class="gap-number">
-        <p>home</p>
-        <p>about</p>
-        <p>contact</p>
-    </Cluster>
-
-    <hr>
-
-    <Cluster gap={20} align="start" class="align-start">
-        <p>home</p>
-        <p style="height: 2rem;">about</p>
-        <p>contact</p>
-    </Cluster>
-
-    <hr>
-
-    <Cluster gap={20} align="end" class="align-end">
-        <p>home</p>
-        <p style="height: 2rem;">about</p>
-        <p>contact</p>
-    </Cluster>
-
-    <hr>
-
-    <Cluster gap={20} align="center" class="align-center">
-        <p>home</p>
-        <p style="height: 2rem;">about</p>
-        <p>contact</p>
-    </Cluster>
-
-    <hr>
-
-    <Cluster gap={20} align="stretch" class="align-stretch">
-        <p>home</p>
-        <p style="height: 2rem;">about</p>
-        <p>contact</p>
-    </Cluster>
-
-    <hr>
-    
-    <Cluster gap={20} justify="start" class="justify-start">
-        <p>home</p>
-        <p>about</p>
-        <p>contact</p>
-    </Cluster>
-
-    <hr>
-
-    <Cluster gap={20} justify="center" class="justify-center">
-        <p>home</p>
-        <p>about</p>
-        <p>contact</p>
-    </Cluster>
-
-    <hr>
-
-    <Cluster gap={20} justify="end" class="justify-end">
-        <p>home</p>
-        <p>about</p>
-        <p>contact</p>
-    </Cluster>
-
-    <hr>
-
-    <Cluster gap={20} justify="between" class="justify-between">
-        <p>home</p>
-        <p>about</p>
-        <p>contact</p>
-    </Cluster>
-
-    <hr>
-
-    <Cluster gap={20} justify="around" class="justify-around">
+    <Cluster gap={20} style="gap: 20px; align-items: center; justify-content: center;" class="align-start">
         <p>home</p>
         <p>about</p>
         <p>contact</p>

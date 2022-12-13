@@ -1,0 +1,61 @@
+---
+import type { HTMLAttributes, HTMLTag } from 'astro/types';
+import { parseCssLength } from '../utils/css.js';
+import type { CSSLength } from '../utils/css.js';
+import { uid } from '../utils/uid.js';
+
+export interface Props extends HTMLAttributes<'section'> {
+	as?: HTMLTag;
+	fraction?: `${number}/${number}` | `${number} / ${number}` | 'auto-start' | 'auto-end';
+	threshold?: CSSLength;
+}
+
+const FRACTION_PATTERN = /(?:[1-9][0-9]*|0).?\/.?[1-9][0-9]*/g;
+function getFraction(value: Props['fraction']) {
+	if (!value) {
+		return '1fr 2fr';
+	} else if (value.match(FRACTION_PATTERN)) {
+		const [start, end] = value.split('/');
+		return `${start.trim()}fr ${end.trim()}fr`;
+	} else if (value === 'auto-start') {
+		return 'auto 1fr';
+	} else if (value === 'auto-end') {
+		return '1fr auto';
+	} else {
+		return '1fr 2fr';
+	}
+}
+
+const {
+	as: Component = 'section',
+	id = uid(),
+	fraction = '1/2',
+	threshold = '0px',
+	class: className = '',
+	...attrs
+} = Astro.props;
+
+const safeFraction = getFraction(fraction);
+const safeThreshold = parseCssLength(threshold);
+const inlineStyle = `
+    @media (min-width: ${safeThreshold}) {
+        #${id} {
+            --columns: ${safeFraction};
+        }
+    }
+`;
+---
+
+<Component id={id} class:list={['split', className]} {...attrs}>
+	<slot />
+</Component>
+
+<style is:global set:html={inlineStyle}></style>
+
+<style>
+	.split {
+		display: grid;
+		grid-template-columns: var(--columns, 1fr);
+		gap: var(--spacer-lg);
+	}
+</style>
