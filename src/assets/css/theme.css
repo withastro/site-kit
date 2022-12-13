@@ -1,0 +1,131 @@
+:root {
+	--max-w-content: 75ch;
+	--max-w-hero: 95ch;
+	--max-w-layout: 120ch;
+
+	--font-sans: system-ui, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+		'Helvetica Neue', sans-serif;
+	--font-serif: 'Apple Garamond', 'Baskerville', 'Times New Roman', 'Droid Serif', 'Times',
+		'Source Serif Pro', serif;
+	--font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', 'Source Code Pro',
+		monospace;
+
+	--leading-xs: 0.9;
+	--leading-sm: 1.2;
+	--leading: 1.5;
+	--leading-lg: 1.8;
+
+	/* Major Thirds */
+	--font-scale: 1.414;
+	--text-sm: max(calc(var(--text-normal) / var(--font-scale)), 14px);
+	--text-normal: 1rem;
+	--text-h5: calc(var(--text-normal) * var(--font-scale));
+	--text-h4: calc(var(--text-h5) * var(--font-scale));
+	--text-h3: calc(var(--text-h4) * var(--font-scale));
+	--text-h2: calc(var(--text-h3) * var(--font-scale));
+	--text-h1: calc(var(--text-h2) * var(--font-scale));
+
+	--tracking-tight: -0.025em;
+	--tracking-wide: 0.025em;
+
+	--gap-increment: 8px;
+	--gap-0\.5: calc(var(--gap-increment) / 2);
+	--gap-1: var(--gap-increment);
+	--gap-2: calc(var(--gap-increment) * 2);
+	--gap-3: calc(var(--gap-increment) * 3);
+	--gap-4: calc(var(--gap-increment) * 4);
+	--gap-5: calc(var(--gap-increment) * 5);
+	--gap-6: calc(var(--gap-increment) * 6);
+	--gap-7: calc(var(--gap-increment) * 7);
+	--gap-8: calc(var(--gap-increment) * 8);
+}
+
+body {
+	font-family: var(--font-sans);
+	line-height: var(--leading);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-serif);
+	font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+.h4,
+.h3,
+.h2,
+.h1 {
+	line-height: var(--leading-xs);
+	letter-spacing: -0.025em;
+}
+
+h1,
+.h1 {
+	font-size: var(--text-h1);
+}
+
+h2,
+.h2 {
+	font-size: var(--text-h2);
+}
+
+h3,
+.h3 {
+	font-size: var(--text-h3);
+}
+
+h4,
+.h4 {
+	font-size: var(--text-h4);
+}
+
+h5,
+.h5 {
+	font-size: var(--text-h5);
+}
+
+.text-normal {
+	line-height: var(--leading);
+	letter-spacing: unset;
+	font-size: var(--text-normal);
+}
+
+h6,
+small,
+.text-sm {
+	font-size: var(--text-sm);
+	letter-spacing: var(--tracking-wide);
+}
+
+.text-xs {
+	font-size: var(--text-xs);
+}
+
+code,
+pre {
+	font-family: var(--font-mono);
+}
+
+:where(.font-sans) {
+	font-family: var(--font-sans);
+}
+
+:where(.font-serif) {
+	font-family: var(--font-serif);
+}
+
+:where(.font-mono) {
+	font-family: var(--font-mono);
+}
+
+:where(.text-center) {
+	text-align: center;
+}

@@ -12,13 +12,14 @@
   "bugs": "https://github.com/withastro/site-kit/issues",
   "homepage": "https://github.com/withastro/site-kit#readme",
   "exports": {
-    "./components/*": "./components/*",
-    "./icons/*": "./icons/*",
+    "./assets/*": "./src/assets/*",
+    "./components/*": "./src/components/*",
     "./eslint": "./.eslintrc.cjs",
     "./prettier": "./.prettierrc.cjs",
     "./typescript": "./tsconfig.json"
   },
   "files": [
+    "assets",
     "components",
     "icons",
     "layouts",
@@ -32,24 +33,30 @@
     "format:eslint": "eslint --fix \"**/*.astro\"",
     "lint": "run-s format:*",
     "lint:prettier": "prettier --plugin-search-dir=. .",
-    "lint:eslint": "eslint \"**/*.astro\""
+    "lint:eslint": "eslint \"**/*.astro\"",
+    "test": "playwright test",
+    "test:e2e": "run-s test:install test:build test:preview",
+    "test:install": "cd tests/fixture && pnpm i",
+    "test:build": "astro build --root tests/fixture",
+    "test:preview": "astro preview --root tests/fixture"
   },
   "dependencies": {
-    "@astrojs/image": "^0.10.0",
-    "astro": "^1.5.0",
+    "@astrojs/image": "^0.12.1",
+    "astro": "^1.6.15",
     "smartypants": "^0.1.6"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.25.0",
+    "@changesets/cli": "^2.25.2",
+    "@playwright/test": "^1.28.1",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
-    "@typescript-eslint/parser": "^5.40.0",
-    "eslint": "^8.25.0",
-    "eslint-plugin-astro": "^0.20.0",
+    "@typescript-eslint/parser": "^5.46.1",
+    "eslint": "^8.29.0",
+    "eslint-plugin-astro": "^0.21.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-prettier": "^4.2.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.7.1",
-    "prettier-plugin-astro": "^0.5.5"
+    "prettier": "^2.8.1",
+    "prettier-plugin-astro": "^0.7.0"
   },
   "packageManager": "pnpm@7.12.2"
 }
