@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('homepage has title and links to intro page', async ({ page }) => {
+test('<Stack />', async ({ page }) => {
   await page.goto('/components/stack');
 
   // Expect a title "to contain" a substring.
