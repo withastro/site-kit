@@ -1,0 +1,56 @@
+---
+import Stack from '@astrojs/site-kit/components/Stack.astro'
+import Layout from '../../layouts/Base.astro'
+---
+
+<Layout title="Stack">
+    <h1>Stack.astro</h1>
+
+    <Stack gap="--spacer-lg" class="gap-var">
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+    </Stack>
+
+    <hr>
+
+    <Stack gap="2rem" class="gap-length">
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+    </Stack>
+    
+    <hr>
+
+    <Stack gap={20} class="gap-number">
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+    </Stack>
+    
+    <hr>
+
+    <Stack class="split-after" splitAfter={2}>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+        <p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
+    </Stack>
+</Layout>
+
+<style>
+    [data-stack] {
+        padding-block: var(--spacer-xl);
+    }
+
+    .split-after {
+        min-height: 20rem;
+    }
+</style>

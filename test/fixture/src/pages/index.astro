@@ -1,0 +1,30 @@
+---
+import '@astrojs/site-kit/assets/css/reset.css'
+import '@astrojs/site-kit/assets/css/theme.css'
+import Stack from '@astrojs/site-kit/components/Stack.astro'
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<Stack class="test" gap="--spacer-lg" splitAfter={2} style="height: 100%;">
+			<p>Testing</p>
+			<p>Testing</p>
+			<p>Testing</p>
+			<p>Testing</p>
+		</Stack>
+	</body>
+</html>
+
+
+<style>
+	html, body {
+		height: 100%;
+	}
+</style>
