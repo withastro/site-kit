@@ -1,4 +1,4 @@
-name: Create a Snapshot Release
+name: Update E2E Test Snapshots
 
 on:
   issue_comment:
@@ -7,11 +7,6 @@ on:
 defaults:
   run:
     shell: bash
-
-env:
-  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-  FORCE_COLOR: true
 
 jobs:
   update-snapshots:
