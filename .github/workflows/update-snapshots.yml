@@ -14,20 +14,19 @@ jobs:
     if: ${{ github.repository_owner == 'withastro' && github.event.issue.pull_request && startsWith(github.event.comment.body, '!snapshots') }}
     runs-on: ubuntu-latest
     steps:
-      - name: "Check if user has admin access (only admins can update test snapshots)."
-        uses: "lannonbr/repo-permission-check-action@2.0.0"
+      - name: 'Check if user has admin access (only admins can update test snapshots).'
+        uses: 'lannonbr/repo-permission-check-action@2.0.0'
         with:
-          permission: "admin"
+          permission: 'admin'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
 
       - name: resolve pr refs
         id: refs
         uses: eficode/resolve-pr-refs@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - uses: actions/checkout@v3
         with:
           ref: ${{ steps.refs.outputs.head_ref }}
@@ -50,7 +49,7 @@ jobs:
 
       - name: Run Playwright tests
         run: pnpm dlx playwright test --update-snapshots
-      
+
       - uses: actions/upload-artifact@v3
         if: always()
         with:
@@ -71,5 +70,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '```\n' + E2E test snapshots updated + '\n```',
+              body: ':robot: ```\nE2E test snapshots updated\n```',
             })

@@ -6,17 +6,23 @@ import { uid } from '../utils/uid.js';
 
 export interface Props extends HTMLAttributes<'div'> {
 	as?: HTMLTag;
-    threshold: CSSLength;
+	threshold: CSSLength;
 }
 
-const { as: Component = 'section', threshold, id = uid(), class: className = '', ...attrs } = Astro.props;
+const {
+	as: Component = 'section',
+	threshold,
+	id = uid(),
+	class: className = '',
+	...attrs
+} = Astro.props;
 
 const safeThreshold = parseCssLength(threshold);
 
 const inlineStyle = `#${id} > * {
     flex-grow: 1;
     flex-basis: calc((${safeThreshold} - 100%) * 999);
-}`
+}`;
 ---
 
 <Component class:list={['switcher', className]} id={id} {...attrs}>
@@ -31,9 +37,8 @@ const inlineStyle = `#${id} > * {
 		flex-wrap: wrap;
 	}
 
-    .switcher > :global(:nth-last-child(n+ 5)),
-    .switcher > :global(:nth-last-child(n+ 5) ~ *) {
-        flex-basis: 100%;
-    }
-  
+	.switcher > :global(:nth-last-child(n + 5)),
+	.switcher > :global(:nth-last-child(n + 5) ~ *) {
+		flex-basis: 100%;
+	}
 </style>

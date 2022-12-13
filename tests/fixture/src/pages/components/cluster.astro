@@ -1,28 +1,32 @@
 ---
-import Cluster from '@astrojs/site-kit/components/Cluster.astro'
-import Layout from '../../layouts/Base.astro'
+import Cluster from '@astrojs/site-kit/components/Cluster.astro';
+import Layout from '../../layouts/Base.astro';
 ---
 
 <Layout title="Cluster">
-    <h1>Cluster.astro</h1>
+	<h1>Cluster.astro</h1>
 
-    <Cluster style="gap: var(--gap-2);" class="gap-var">
-        <p>home</p>
-        <p>about</p>
-        <p>contact</p>
-    </Cluster>
+	<Cluster style="gap: var(--gap-2);" class="gap-var">
+		<p>home</p>
+		<p>about</p>
+		<p>contact</p>
+	</Cluster>
 
-    <hr>
+	<hr />
 
-    <Cluster gap={20} style="gap: 20px; align-items: center; justify-content: center;" class="align-start">
-        <p>home</p>
-        <p>about</p>
-        <p>contact</p>
-    </Cluster>
+	<Cluster
+		gap={20}
+		style="gap: 20px; align-items: center; justify-content: center;"
+		class="align-start"
+	>
+		<p>home</p>
+		<p>about</p>
+		<p>contact</p>
+	</Cluster>
 </Layout>
 
 <style>
-    [data-cluster] {
-        padding-block: var(--gap-3);
-    }
+	[data-cluster] {
+		padding-block: var(--gap-3);
+	}
 </style>

@@ -6,21 +6,30 @@ import { joinStyles } from '../utils/styles.js';
 
 export interface Props extends HTMLAttributes<'div'> {
 	as?: HTMLTag;
-    style?: string;
-    gutter?: CSSLength;
-    maxWidth?: CSSLength;
-    layout?: boolean;
+	style?: string;
+	gutter?: CSSLength;
+	maxWidth?: CSSLength;
+	layout?: boolean;
 }
 
-const { as: Component = 'section', gutter, maxWidth, layout, class: className = '', style = '', ...attrs } = Astro.props;
+const {
+	as: Component = 'section',
+	gutter,
+	maxWidth,
+	layout,
+	class: className = '',
+	style = '',
+	...attrs
+} = Astro.props;
 
-const safeMaxWidth = parseCssLength(maxWidth) || layout ? 'var(--max-w-layout)' : 'var(--max-w-content)';
+const safeMaxWidth =
+	parseCssLength(maxWidth) || layout ? 'var(--max-w-layout)' : 'var(--max-w-content)';
 const safeGutter = parseCssLength(gutter) || 'var(--gap-2)';
 
 const componentStyle = joinStyles(
-    `grid-template-columns: 1fr min(${safeMaxWidth}, calc(100% - (2 * ${safeGutter}))) 1fr`,
-    style
-)
+	`grid-template-columns: 1fr min(${safeMaxWidth}, calc(100% - (2 * ${safeGutter}))) 1fr`,
+	style
+);
 ---
 
 <Component class:list={['full-bleed', className]} style={componentStyle} {...attrs}>

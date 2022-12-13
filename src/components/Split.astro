@@ -16,8 +16,8 @@ function getFraction(value: Props['fraction']) {
 		return '1fr 1fr';
 	} else if (value.match(FRACTION_PATTERN)) {
 		const [start, end] = value.split('/');
-		const startNum = parseInt(start)
-		const endNum = parseInt(end)
+		const startNum = parseInt(start);
+		const endNum = parseInt(end);
 		return `${startNum / endNum}fr ${(endNum - startNum) / endNum}fr`;
 	} else if (value === 'auto-start') {
 		return 'auto 1fr';
