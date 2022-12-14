@@ -6,7 +6,7 @@ import Layout from '../../layouts/Base.astro';
 <Layout title="Stack">
 	<h1>Stack.astro</h1>
 
-	<Stack gap="--gap-2" class="gap-var">
+	<Stack gap="--gap-2" padding={{ block: "--gap-3" }}>
 		<p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
 		<p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
 		<p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
@@ -16,7 +16,7 @@ import Layout from '../../layouts/Base.astro';
 
 	<hr />
 
-	<Stack gap="2rem" class="gap-length">
+	<Stack gap="2rem" padding={{ block: "--gap-3" }}>
 		<p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
 		<p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
 		<p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
@@ -26,7 +26,7 @@ import Layout from '../../layouts/Base.astro';
 
 	<hr />
 
-	<Stack gap={20} class="gap-number">
+	<Stack gap={20} padding={{ block: "--gap-3" }}>
 		<p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
 		<p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
 		<p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
@@ -36,7 +36,7 @@ import Layout from '../../layouts/Base.astro';
 
 	<hr />
 
-	<Stack class="split-after" splitAfter={2}>
+	<Stack padding={{ block: "--gap-3" }} splitAfter={2}>
 		<p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
 		<p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
 		<p>Reprehenderit ea culpa dolore dolor eiusmod.</p>
@@ -46,10 +46,6 @@ import Layout from '../../layouts/Base.astro';
 </Layout>
 
 <style>
-	[data-stack] {
-		padding-block: var(--gap-3);
-	}
-
 	.split-after {
 		min-block-size: 20rem;
 	}

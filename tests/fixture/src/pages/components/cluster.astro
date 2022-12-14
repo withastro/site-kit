@@ -6,7 +6,7 @@ import Layout from '../../layouts/Base.astro';
 <Layout title="Cluster">
 	<h1>Cluster.astro</h1>
 
-	<Cluster gap="--gap-2">
+	<Cluster gap="--gap-2" padding={{ block: "--gap-3" }}>
 		<p>home</p>
 		<p>about</p>
 		<p>contact</p>
@@ -16,6 +16,7 @@ import Layout from '../../layouts/Base.astro';
 
 	<Cluster
 		gap={20}
+		padding={{ block: "--gap-3" }}
 		align="center"
 		justify="center"
 	>
@@ -25,8 +26,3 @@ import Layout from '../../layouts/Base.astro';
 	</Cluster>
 </Layout>
 
-<style>
-	[data-cluster] {
-		padding-block: var(--gap-3);
-	}
-</style>
