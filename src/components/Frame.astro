@@ -3,7 +3,8 @@ import Component from './BaseComponent.astro';
 import type { Props as BaseProps } from './BaseComponent.astro';
 import { joinStyles } from '../utils/styles';
 
-export type Ratio = | `${number}/${number}` | `${number} / ${number}` | `${number}:${number}` | `${number} : ${number}` | [number, number];
+// prettier-ignore
+export type Ratio = `${number}/${number}` | `${number} / ${number}` | `${number}:${number}` | `${number} : ${number}` | [number, number];
 
 export interface Props extends BaseProps {
 	ratio: Ratio;
