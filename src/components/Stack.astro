@@ -10,7 +10,7 @@ export interface Props extends BaseProps {
 
 const { splitAfter, class: className = '', ...props } = Astro.props;
 
-const { id = splitAfter && uid(), ...attrs } = props;
+const { id = splitAfter ? uid() : undefined, ...attrs } = props;
 
 const inlineStyle =
 	splitAfter &&
