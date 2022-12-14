@@ -9,13 +9,13 @@ export interface Props extends BaseProps {
 	style?: string;
 	gutter?: CSSLength;
 	maxWidth?: CSSLength;
-	layout?: boolean;
+	content?: boolean;
 }
 
-const { gutter, maxWidth, layout, class: className = '', style = '', ...attrs } = Astro.props;
+const { gutter, maxWidth, content, class: className = '', style = '', ...attrs } = Astro.props;
 
 const safeMaxWidth =
-	parseCssLength(maxWidth) || layout ? 'var(--max-w-layout)' : 'var(--max-w-content)';
+	parseCssLength(maxWidth) || content ? 'var(--max-w-content)' : 'var(--max-w-layout)';
 const safeGutter = parseCssLength(gutter) || 'var(--gap-2)';
 
 const componentStyle = joinStyles(

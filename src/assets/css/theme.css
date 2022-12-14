@@ -38,6 +38,9 @@
 	--gap-6: calc(var(--gap-increment) * 6);
 	--gap-7: calc(var(--gap-increment) * 7);
 	--gap-8: calc(var(--gap-increment) * 8);
+	--gap-10: calc(var(--gap-increment) * 10);
+	--gap-12: calc(var(--gap-increment) * 12);
+	--gap-16: calc(var(--gap-increment) * 16);
 }
 
 body {

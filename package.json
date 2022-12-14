@@ -11,19 +11,18 @@
   },
   "bugs": "https://github.com/withastro/site-kit/issues",
   "homepage": "https://github.com/withastro/site-kit#readme",
+  "types": "./src/index.ts",
   "exports": {
+    ".": "./src/index.ts",
     "./assets/*": "./src/assets/*",
-    "./components": "./src/components/index.js",
+    "./components": "./src/components/index.ts",
     "./components/*": "./src/components/*",
     "./eslint": "./.eslintrc.cjs",
     "./prettier": "./.prettierrc.cjs",
     "./typescript": "./tsconfig.json"
   },
   "files": [
-    "assets",
-    "components",
-    "icons",
-    "layouts",
+    "src",
     ".eslintrc.js",
     ".prettierrc.cjs",
     "tsconfig.json"

@@ -14,7 +14,15 @@ export interface Props extends HTMLAttributes<'div'> {
 	slot?: string;
 }
 
-const { as: Component = 'div', slot, gap, padding, class: className = '', style, ...attrs } = Astro.props;
+const {
+	as: Component = 'div',
+	slot,
+	gap,
+	padding,
+	class: className = '',
+	style,
+	...attrs
+} = Astro.props;
 
 const safeGap = parseCssLength(gap);
 const safePadding = getPaddingStyles(padding);
