@@ -2,10 +2,13 @@
 import Component from './BaseComponent.astro';
 import type { Props as BaseProps } from './BaseComponent.astro';
 import { joinStyles } from '../utils/styles.js';
+import { uid } from '../utils/uid.js';
+import Show from './Show.astro';
 
 export interface Props extends BaseProps {
 	justify?: 'start' | 'end' | 'center' | 'between' | 'around';
 	align?: 'start' | 'end' | 'center' | 'stretch';
+	splitAfter?: number;
 }
 
 function getJustify(value: Props['justify']) {
@@ -45,7 +48,8 @@ function getAlign(value: Props['align']) {
 	}
 }
 
-const { justify, align, class: className, style, ...attrs } = Astro.props;
+const { splitAfter, justify, align, class: className, style, ...props } = Astro.props;
+const { id = splitAfter ? uid() : undefined, ...attrs } = Astro.props;
 
 const safeJustify = getJustify(justify);
 const safeAlign = getAlign(align);
@@ -55,11 +59,24 @@ const componentStyle = joinStyles(
 	safeAlign && `align-items: ${safeAlign}`,
 	style
 );
+
+const inlineStyle =
+	splitAfter &&
+	`#${id}:only-child {
+	inline-size: 100%;
+}
+#${id} > :nth-child(${splitAfter}) {
+	margin-inline-end: auto;
+}`;
 ---
 
-<Component class:list={['cluster', className]} style={componentStyle} {...attrs}>
+<Component id={id} class:list={['cluster', className]} style={componentStyle} {...attrs}>
 	<slot />
 </Component>
+
+<Show when={inlineStyle}>
+	<style set:html={inlineStyle} is:global></style>
+</Show>
 
 <style>
 	.cluster {
