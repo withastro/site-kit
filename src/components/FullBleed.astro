@@ -1,5 +1,4 @@
 ---
-import type { HTMLAttributes, HTMLTag } from 'astro/types';
 import Component from './BaseComponent.astro';
 import type { Props as BaseProps } from './BaseComponent.astro';
 import { parseCssLength } from '../utils/css.js';
@@ -13,14 +12,7 @@ export interface Props extends BaseProps {
 	layout?: boolean;
 }
 
-const {
-	gutter,
-	maxWidth,
-	layout,
-	class: className = '',
-	style = '',
-	...attrs
-} = Astro.props;
+const { gutter, maxWidth, layout, class: className = '', style = '', ...attrs } = Astro.props;
 
 const safeMaxWidth =
 	parseCssLength(maxWidth) || layout ? 'var(--max-w-layout)' : 'var(--max-w-content)';

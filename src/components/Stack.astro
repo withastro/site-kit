@@ -1,5 +1,4 @@
 ---
-import type { HTMLAttributes, HTMLTag } from 'astro/types';
 import Component from './BaseComponent.astro';
 import type { Props as BaseProps } from './BaseComponent.astro';
 import Show from './Show.astro';
@@ -13,12 +12,14 @@ const { splitAfter, class: className = '', ...props } = Astro.props;
 
 const { id = splitAfter && uid(), ...attrs } = props;
 
-const inlineStyle = splitAfter && `#${id}:only-child {
+const inlineStyle =
+	splitAfter &&
+	`#${id}:only-child {
 	block-size: 100%;
 }
 #${id} > :nth-child(${splitAfter}) {
 	margin-block-end: auto;
-}`
+}`;
 ---
 
 <Component class:list={['stack', className]} id={id} {...attrs}>
@@ -37,6 +38,6 @@ const inlineStyle = splitAfter && `#${id}:only-child {
 	}
 
 	.stack > * {
-		margin-block:
+		margin-block: ;
 	}
 </style>

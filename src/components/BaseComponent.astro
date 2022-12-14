@@ -7,24 +7,20 @@ import type { Padding } from '../utils/padding.js';
 import { joinStyles } from '../utils/styles.js';
 
 export interface Props extends HTMLAttributes<'div'> {
-    as?: HTMLTag
-    gap?: CSSLength
-    padding?: Padding
-    style?: string
+	as?: HTMLTag;
+	gap?: CSSLength;
+	padding?: Padding;
+	style?: string;
 }
 
-const { as: Component = 'div', gap, padding, class: className = '', style, ...attrs } = Astro.props
+const { as: Component = 'div', gap, padding, class: className = '', style, ...attrs } = Astro.props;
 
-const safeGap = parseCssLength(gap)
-const safePadding = getPaddingStyles(padding)
+const safeGap = parseCssLength(gap);
+const safePadding = getPaddingStyles(padding);
 
-const componentStyle = joinStyles(
-    safeGap && `gap: ${safeGap};`,
-    safePadding,
-    style
-)
+const componentStyle = joinStyles(safeGap && `gap: ${safeGap};`, safePadding, style);
 ---
 
 <Component style={componentStyle} class={className} {...attrs}>
-    <slot />
+	<slot />
 </Component>

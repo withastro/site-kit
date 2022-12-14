@@ -1,5 +1,4 @@
 ---
-import type { HTMLAttributes, HTMLTag } from 'astro/types';
 import Component from './BaseComponent.astro';
 import type { Props as BaseProps } from './BaseComponent.astro';
 import { parseCssLength } from '../utils/css.js';
@@ -10,12 +9,7 @@ export interface Props extends BaseProps {
 	threshold: CSSLength;
 }
 
-const {
-	threshold,
-	id = uid(),
-	class: className = '',
-	...attrs
-} = Astro.props;
+const { threshold, id = uid(), class: className = '', ...attrs } = Astro.props;
 
 const safeThreshold = parseCssLength(threshold);
 
