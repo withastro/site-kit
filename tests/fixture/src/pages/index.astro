@@ -1,30 +1,46 @@
 ---
+import Layout from '../layouts/Base.astro';
 import '@astrojs/site-kit/assets/css/reset.css';
 import '@astrojs/site-kit/assets/css/theme.css';
+import For from '@astrojs/site-kit/components/For.astro';
 import Stack from '@astrojs/site-kit/components/Stack.astro';
+
+const components = await Astro.glob('./components/*.astro')
+
+interface Route {
+	href: string
+	text: string
+}
+
+const componentRoutes = components.map(({ url }) => ({
+	href: url!,
+	text: url!.split('/').filter(Boolean)[1].replace('-', ' ')
+}))
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<Stack class="test" gap="--gap-1" splitAfter={2} style="height: 100%;">
-			<p>Testing</p>
-			<p>Testing</p>
-			<p>Testing</p>
-			<p>Testing</p>
+<Layout title="Site Kit">
+	<Stack class="test" gap="--gap-1" splitAfter={2} style="height: 100%;">
+		<h2>Components</h2>
+		<Stack as="ul" gap="--gap-1">
+			<For each={componentRoutes}>
+				{({ href, text }: Route) => (
+					<li>
+						<a href={href} class="h5">{text}</a>
+					</li>
+				)}
+			</For>
 		</Stack>
-	</body>
-</html>
+	</Stack>
+</Layout>
 
 <style>
-	html,
-	body {
-		height: 100%;
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	a {
+		text-transform: capitalize;
 	}
 </style>

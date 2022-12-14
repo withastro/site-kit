@@ -6,7 +6,7 @@ import Layout from '../../layouts/Base.astro';
 <Layout title="Grid">
 	<h1>Grid.astro</h1>
 
-	<Grid class="wrapper" minimum="30ch">
+	<Grid class="wrapper" minimum="30ch" gap="--gap-2">
 		<div>
 			<p>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos unde eius voluptatem
@@ -44,15 +44,11 @@ import Layout from '../../layouts/Base.astro';
 		padding: 1em;
 	}
 
-	.wrapper {
-		gap: 1rem;
-	}
-
 	.wrapper ~ .wrapper {
-		margin-top: 5rem;
+		margin-block-start: 5rem;
 	}
 
 	.wide div {
-		min-width: 40ch;
+		min-inline-size: 40ch;
 	}
 </style>

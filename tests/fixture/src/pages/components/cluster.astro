@@ -6,7 +6,7 @@ import Layout from '../../layouts/Base.astro';
 <Layout title="Cluster">
 	<h1>Cluster.astro</h1>
 
-	<Cluster style="gap: var(--gap-2);" class="gap-var">
+	<Cluster gap="--gap-2">
 		<p>home</p>
 		<p>about</p>
 		<p>contact</p>
@@ -16,8 +16,8 @@ import Layout from '../../layouts/Base.astro';
 
 	<Cluster
 		gap={20}
-		style="gap: 20px; align-items: center; justify-content: center;"
-		class="align-start"
+		align="center"
+		justify="center"
 	>
 		<p>home</p>
 		<p>about</p>

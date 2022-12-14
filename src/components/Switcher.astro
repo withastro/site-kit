@@ -1,16 +1,16 @@
 ---
 import type { HTMLAttributes, HTMLTag } from 'astro/types';
+import Component from './BaseComponent.astro';
+import type { Props as BaseProps } from './BaseComponent.astro';
 import { parseCssLength } from '../utils/css.js';
 import type { CSSLength } from '../utils/css.js';
 import { uid } from '../utils/uid.js';
 
-export interface Props extends HTMLAttributes<'div'> {
-	as?: HTMLTag;
+export interface Props extends BaseProps {
 	threshold: CSSLength;
 }
 
 const {
-	as: Component = 'section',
 	threshold,
 	id = uid(),
 	class: className = '',

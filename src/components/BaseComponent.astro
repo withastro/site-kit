@@ -1,0 +1,25 @@
+---
+import type { HTMLAttributes, HTMLTag } from 'astro/types';
+import { parseCssLength } from '../utils/css.js';
+import type { CSSLength } from '../utils/css.js';
+import { joinStyles } from '../utils/styles.js';
+
+export interface Props extends HTMLAttributes<'div'> {
+    as?: HTMLTag
+    gap?: CSSLength
+    style?: string
+}
+
+const { as: Component = 'div', gap, class: className = '', style, ...attrs } = Astro.props
+
+const safeGap = parseCssLength(gap)
+
+const componentStyle = joinStyles(
+    safeGap && `gap: ${safeGap};`,
+    style
+)
+---
+
+<Component style={componentStyle} class={className} {...attrs}>
+    <slot />
+</Component>

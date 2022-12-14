@@ -1,11 +1,12 @@
 ---
 import type { HTMLAttributes, HTMLTag } from 'astro/types';
+import Component from './BaseComponent.astro';
+import type { Props as BaseProps } from './BaseComponent.astro';
 import { parseCssLength } from '../utils/css.js';
 import type { CSSLength } from '../utils/css.js';
 import { uid } from '../utils/uid.js';
 
-export interface Props extends HTMLAttributes<'section'> {
-	as?: HTMLTag;
+export interface Props extends BaseProps {
 	fraction?: `${number}/${number}` | `${number} / ${number}` | 'auto-start' | 'auto-end';
 	threshold: CSSLength;
 }
@@ -29,7 +30,6 @@ function getFraction(value: Props['fraction']) {
 }
 
 const {
-	as: Component = 'section',
 	id = uid(),
 	fraction = '1/2',
 	threshold = '0px',
@@ -42,7 +42,7 @@ const safeThreshold = parseCssLength(threshold);
 const inlineStyle = `
     @media (min-width: ${safeThreshold}) {
         #${id} {
-            --columns: ${safeFraction};
+            grid-template-columns: ${safeFraction};
         }
     }
 `;
@@ -57,6 +57,6 @@ const inlineStyle = `
 <style>
 	.split {
 		display: grid;
-		grid-template-columns: var(--columns, 1fr);
+		grid-template-columns: 1fr;
 	}
 </style>
