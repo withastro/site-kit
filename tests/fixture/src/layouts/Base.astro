@@ -1,12 +1,13 @@
 ---
-import '@astrojs/site-kit/assets/css/reset.css'
-import '@astrojs/site-kit/assets/css/theme.css'
+import '@astrojs/site-kit/assets/css/reset.css';
+import '@astrojs/site-kit/assets/css/theme.css';
+import { FullBleed } from '@astrojs/site-kit/components';
 
 export interface Props {
-    title: string
+	title: string;
 }
 
-const { title } = Astro.props
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -18,16 +19,8 @@ const { title } = Astro.props
 		<title>{title} | Astro</title>
 	</head>
 	<body>
-		<main>
+		<FullBleed as="main" layout>
 			<slot />
-		</main>
+		</FullBleed>
 	</body>
 </html>
-
-<style>
-	main {
-		width: 100%;
-		max-width: 1280px;
-		margin: 0 auto;
-	}
-</style>

@@ -1,0 +1,46 @@
+---
+import Split from '@astrojs/site-kit/components/Split.astro';
+import Layout from '../../layouts/Base.astro';
+---
+
+<Layout title="Split">
+	<h1>Split.astro</h1>
+
+	<Split class="test" gap="--gap-4">
+		<div></div>
+		<div></div>
+	</Split>
+
+	<Split class="test" fraction="1/3" gap="2rem">
+		<div></div>
+		<div></div>
+	</Split>
+
+	<Split class="test" fraction="2/3">
+		<div></div>
+		<div></div>
+	</Split>
+
+	<Split class="test" threshold="1024px">
+		<div></div>
+		<div></div>
+	</Split>
+</Layout>
+
+<style>
+	.test ~ .test {
+		margin-block-start: 1rem;
+	}
+
+	.test > div {
+		block-size: 10rem;
+	}
+
+	.test > div:first-child {
+		background: red;
+	}
+
+	.test > div:last-child {
+		background: blue;
+	}
+</style>

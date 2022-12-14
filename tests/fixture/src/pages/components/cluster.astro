@@ -1,0 +1,22 @@
+---
+import Cluster from '@astrojs/site-kit/components/Cluster.astro';
+import Layout from '../../layouts/Base.astro';
+---
+
+<Layout title="Cluster">
+	<h1>Cluster.astro</h1>
+
+	<Cluster gap="--gap-2" padding={{ block: '--gap-3' }}>
+		<p>home</p>
+		<p>about</p>
+		<p>contact</p>
+	</Cluster>
+
+	<hr />
+
+	<Cluster gap={20} padding={{ block: '--gap-3' }} align="center" justify="center">
+		<p>home</p>
+		<p>about</p>
+		<p>contact</p>
+	</Cluster>
+</Layout>

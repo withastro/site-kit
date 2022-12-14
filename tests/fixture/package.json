@@ -11,7 +11,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/image": "^0.12.1",
     "@astrojs/site-kit": "link:../..",
-    "astro": "^1.6.15"
+    "astro": "^1.6.15",
+    "sharp": "^0.31.2"
   }
 }

@@ -1,0 +1,45 @@
+---
+import Component from './BaseComponent.astro';
+import type { Props as BaseProps } from './BaseComponent.astro';
+import { parseCssLength } from '../utils/css.js';
+import type { CSSLength } from '../utils/css.js';
+import { joinStyles } from '../utils/styles.js';
+
+export interface Props extends BaseProps {
+	style?: string;
+	gutter?: CSSLength;
+	maxWidth?: CSSLength;
+	layout?: boolean;
+}
+
+const { gutter, maxWidth, layout, class: className = '', style = '', ...attrs } = Astro.props;
+
+const safeMaxWidth =
+	parseCssLength(maxWidth) || layout ? 'var(--max-w-layout)' : 'var(--max-w-content)';
+const safeGutter = parseCssLength(gutter) || 'var(--gap-2)';
+
+const componentStyle = joinStyles(
+	`grid-template-columns: 1fr min(${safeMaxWidth}, calc(100% - (2 * ${safeGutter}))) 1fr`,
+	style
+);
+---
+
+<Component class:list={['full-bleed', className]} style={componentStyle} {...attrs}>
+	<slot />
+</Component>
+
+<style>
+	.full-bleed {
+		display: grid;
+		column-gap: 0 !important;
+	}
+
+	.full-bleed :global(> *) {
+		grid-column: 2;
+		width: 100%;
+	}
+
+	.full-bleed :global(> .cover) {
+		grid-column: 1 / -1;
+	}
+</style>

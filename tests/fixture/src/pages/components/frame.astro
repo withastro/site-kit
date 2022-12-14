@@ -1,0 +1,35 @@
+---
+import Frame from '@astrojs/site-kit/components/Frame.astro';
+import Layout from '../../layouts/Base.astro';
+---
+
+<Layout title="Cluster">
+	<h1>Cluster.astro</h1>
+
+	<Frame ratio="1:1">
+		<img src="https://astro.build/assets/press/full-logo-light.png" alt="" />
+	</Frame>
+
+	<Frame ratio="16/9">
+		<img src="https://astro.build/assets/press/full-logo-light.png" alt="" />
+	</Frame>
+
+	<Frame ratio="16/9">
+		<img
+			src="https://astro.build/assets/press/full-logo-light.png"
+			alt=""
+			style="object-fit: contain; object-position: top center;"
+		/>
+	</Frame>
+</Layout>
+
+<style>
+	.frame {
+		border: 1px solid black;
+		width: 400px;
+	}
+
+	.frame ~ .frame {
+		margin-block-before: 2rem;
+	}
+</style>

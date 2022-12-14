@@ -1,0 +1,70 @@
+---
+import Component from './BaseComponent.astro';
+import type { Props as BaseProps } from './BaseComponent.astro';
+import { joinStyles } from '../utils/styles.js';
+
+export interface Props extends BaseProps {
+	justify?: 'start' | 'end' | 'center' | 'between' | 'around';
+	align?: 'start' | 'end' | 'center' | 'stretch';
+}
+
+function getJustify(value: Props['justify']) {
+	if (!value) {
+		return undefined;
+	}
+
+	switch (value) {
+		case 'end':
+			return 'flex-end';
+		case 'center':
+			return 'center';
+		case 'between':
+			return 'space-between';
+		case 'around':
+			return 'space-around';
+		case 'start':
+		default:
+			return 'flex-start';
+	}
+}
+function getAlign(value: Props['align']) {
+	if (!value) {
+		return undefined;
+	}
+
+	switch (value) {
+		case 'end':
+			return 'flex-end';
+		case 'center':
+			return 'center';
+		case 'stretch':
+			return 'stretch';
+		case 'start':
+		default:
+			return 'flex-start';
+	}
+}
+
+const { justify, align, class: className, style, ...attrs } = Astro.props;
+
+const safeJustify = getJustify(justify);
+const safeAlign = getAlign(align);
+
+const componentStyle = joinStyles(
+	safeJustify && `justify-content: ${safeJustify}`,
+	safeAlign && `align-items: ${safeAlign}`,
+	style
+);
+---
+
+<Component class:list={['cluster', className]} style={componentStyle} {...attrs}>
+	<slot />
+</Component>
+
+<style>
+	.cluster {
+		box-sizing: border-box;
+		display: flex;
+		flex-wrap: wrap;
+	}
+</style>

@@ -1,64 +1,43 @@
 ---
-import type { HTMLAttributes, HTMLTag } from 'astro/types'
-import { parseCssLength } from '../utils/css.js'
-import type { CSSLength } from '../utils/css.js'
-import { uid } from '../utils/uid.js'
+import Component from './BaseComponent.astro';
+import type { Props as BaseProps } from './BaseComponent.astro';
+import Show from './Show.astro';
+import { uid } from '../utils/uid.js';
 
-export interface Props extends HTMLAttributes<'div'> {
-    as?: HTMLTag
-    splitAfter?: number
-    recursive?: boolean
-    gap?: number | CSSLength
+export interface Props extends BaseProps {
+	splitAfter?: number;
 }
 
-const {
-    as: Component = 'div',
-    class: className,
-    splitAfter,
-    recursive,
-    gap,
-    ...props
-} = Astro.props
+const { splitAfter, class: className = '', ...props } = Astro.props;
 
-const safeGap = parseCssLength(gap)
+const { id = splitAfter ? uid() : undefined, ...attrs } = props;
 
-const {
-    id = (safeGap || splitAfter) && uid(),
-    ...attrs
-} = props
-
-const inlineStyle = id && [
-    safeGap && `#${id} { gap: ${safeGap}; }`,
-    splitAfter && `#${id} > :nth-child(${splitAfter}) { margin-block-end: auto; }`
-].filter(Boolean).join('\n')
+const inlineStyle =
+	splitAfter &&
+	`#${id}:only-child {
+	block-size: 100%;
+}
+#${id} > :nth-child(${splitAfter}) {
+	margin-block-end: auto;
+}`;
 ---
 
-<Component data-stack={recursive ? 'recursive' : ''} id={id?.toString()} class={className} {...attrs}>
-    <slot />
+<Component class:list={['stack', className]} id={id} {...attrs}>
+	<slot />
 </Component>
 
-{inlineStyle && (
-    <style set:html={inlineStyle}></style>
-)}
+<Show when={inlineStyle}>
+	<style set:html={inlineStyle} is:global></style>
+</Show>
 
 <style>
-    [data-stack] {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
+	.stack {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
 
-    [data-stack]:not([data-stack=recursive]) > *,
-    [data-stack=recursive] * {
-        margin-block: 0;
-    }
-
-    [data-stack]:not([data-stack=recursive]) > * + *, 
-    [data-stack=recursive] * + * {
-        margin-block-start: var(--gap, 0px);
-    }
-
-    [data-stack]:only-child {
-        block-size: 100%;
-    }
+	.stack > * {
+		margin-block: ;
+	}
 </style>
