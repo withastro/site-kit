@@ -1,37 +1,37 @@
 ---
-import Component from './BaseComponent.astro';
-import type { Props as BaseProps } from './BaseComponent.astro';
-import { joinStyles } from '../utils/styles';
+import { joinStyles } from '../utils/styles'
+import type { Props as BaseProps } from './BaseComponent.astro'
+import Component from './BaseComponent.astro'
 
 // prettier-ignore
 export type Ratio = `${number}/${number}` | `${number} / ${number}` | `${number}:${number}` | `${number} : ${number}` | [number, number];
 
-export interface Props extends BaseProps {
-	ratio: Ratio;
-	gap: never;
-}
+export type Props = {
+	ratio: Ratio
+	gap?: never
+} & BaseProps
 
-const FRACTION_PATTERN = /^\d+\/\d+$/;
-const ASPECT_PATTERN = /^\d+\:\d+$/;
+const FRACTION_PATTERN = /^\d+\/\d+$/
+const ASPECT_PATTERN = /^\d+\:\d+$/
 function getRatio(value: Ratio) {
 	if (Array.isArray(value)) {
-		const [start, end] = value;
-		return `${start}/${end}`;
+		const [start, end] = value
+		return `${start}/${end}`
 	} else if (value.match(FRACTION_PATTERN)) {
-		const [start, end] = value.split('/');
-		return `${start.trim()}/${end.trim()}`;
+		const [start, end] = value.split('/')
+		return `${start.trim()}/${end.trim()}`
 	} else if (value?.match(ASPECT_PATTERN)) {
-		const [start, end] = value.split(':');
-		return `${start.trim()}/${end.trim()}`;
+		const [start, end] = value.split(':')
+		return `${start.trim()}/${end.trim()}`
 	}
-	return undefined;
+	return undefined
 }
 
-const { ratio, class: className = '', style, ...attrs } = Astro.props;
+const { ratio, class: className = '', style, ...attrs } = Astro.props
 
-const safeRatio = getRatio(ratio);
+const safeRatio = getRatio(ratio)
 
-const componentStyle = joinStyles(`aspect-ratio: ${safeRatio}`, style);
+const componentStyle = joinStyles(`aspect-ratio: ${safeRatio}`, style)
 ---
 
 <Component class:list={['frame', className]} style={componentStyle} {...attrs}>

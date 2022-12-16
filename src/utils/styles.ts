@@ -1,10 +1,6 @@
-export function joinStyles(...values: (string | undefined)[]) {
+export function joinStyles(...values: Array<string | undefined>) {
 	return (
-		values
-			.filter(Boolean)
-			.map((value) => value.split(';').map((v) => v.trim()))
-			.flat()
-			.filter(Boolean)
-			.join(';') || undefined
-	);
+		values.flatMap((value) => (value ? value.split(';').map((v) => v.trim()) : [])).join(';') ||
+		undefined
+	)
 }

@@ -1,18 +1,18 @@
 ---
-import type { HTMLAttributes, HTMLTag } from 'astro/types';
-import { parseCssLength } from '../utils/css.js';
-import type { CSSLength } from '../utils/css.js';
-import { getPaddingStyles } from '../utils/padding.js';
-import type { Padding } from '../utils/padding.js';
-import { joinStyles } from '../utils/styles.js';
+import type { HTMLAttributes, HTMLTag } from 'astro/types'
+import type { CSSLength } from '../utils/css.js'
+import { parseCssLength } from '../utils/css.js'
+import type { Padding } from '../utils/padding.js'
+import { getPaddingStyles } from '../utils/padding.js'
+import { joinStyles } from '../utils/styles.js'
 
-export interface Props extends HTMLAttributes<'div'> {
-	as?: HTMLTag;
-	gap?: CSSLength;
-	padding?: Padding;
-	style?: string;
-	slot?: string;
-}
+export type Props = {
+	as?: HTMLTag
+	gap?: CSSLength | number
+	padding?: Padding
+	style?: string
+	slot?: string
+} & HTMLAttributes<'div'>
 
 const {
 	as: Component = 'div',
@@ -22,12 +22,12 @@ const {
 	class: className = '',
 	style,
 	...attrs
-} = Astro.props;
+} = Astro.props
 
-const safeGap = parseCssLength(gap);
-const safePadding = getPaddingStyles(padding);
+const safeGap = parseCssLength(gap)
+const safePadding = getPaddingStyles(padding)
 
-const componentStyle = joinStyles(safeGap && `gap: ${safeGap};`, safePadding, style);
+const componentStyle = joinStyles(safeGap && `gap: ${safeGap};`, safePadding, style)
 ---
 
 <Component slot={slot} style={componentStyle} class={className} {...attrs}>
