@@ -1,7 +1,9 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "types": ["@astrojs/image/client"],
-    "jsx": "preserve"
-  }
+    "jsx": "preserve",
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["**/*", ".eslintrc.cjs"]
 }
