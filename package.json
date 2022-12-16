@@ -44,7 +44,6 @@
   },
   "dependencies": {
     "@astrojs/image": "^0.12.1",
-    "@astrojs/site-kit": "link:src",
     "astro": "^1.6.15",
     "sharp": "^0.31.2",
     "smartypants": "^0.1.6"

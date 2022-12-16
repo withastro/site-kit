@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@astrojs/image': ^0.12.1
-  '@astrojs/site-kit': link:src
   '@changesets/cli': ^2.25.2
   '@playwright/test': ^1.28.1
   '@typescript-eslint/eslint-plugin': ^5.46.1
@@ -20,7 +19,6 @@ specifiers:
 
 dependencies:
   '@astrojs/image': 0.12.1_sharp@0.31.2
-  '@astrojs/site-kit': link:src
   astro: 1.6.15
   sharp: 0.31.2
   smartypants: 0.1.6
