@@ -1,5 +1,5 @@
-import { isCssLength, parseCssLength } from './css.js'
-import type { CSSLength } from './css.js'
+import { isCssLength, parseCssLength } from "./css.js"
+import type { CSSLength } from "./css.js"
 
 export type PaddingObject = {
 	left?: CSSLength
@@ -24,35 +24,35 @@ export type Padding =
 
 function keyToProperty(key: keyof PaddingObject) {
 	switch (key) {
-		case 'inline':
-			return 'padding-inline'
-		case 'left':
-		case 'inlineStart':
-			return 'padding-inline-start'
-		case 'right':
-		case 'inlineEnd':
-			return 'padding-inline-end'
-		case 'block':
-			return 'padding-block'
-		case 'top':
-		case 'blockStart':
-			return 'padding-block-start'
-		case 'bottom':
-		case 'blockEnd':
-			return 'padding-block-end'
+		case "inline":
+			return "padding-inline"
+		case "left":
+		case "inlineStart":
+			return "padding-inline-start"
+		case "right":
+		case "inlineEnd":
+			return "padding-inline-end"
+		case "block":
+			return "padding-block"
+		case "top":
+		case "blockStart":
+			return "padding-block-start"
+		case "bottom":
+		case "blockEnd":
+			return "padding-block-end"
 		default:
 			return undefined
 	}
 }
 
 export function isValidPadding(padding: Padding): boolean {
-	if (typeof padding === 'number') {
+	if (typeof padding === "number") {
 		return padding >= 0
-	} else if (typeof padding === 'string') {
+	} else if (typeof padding === "string") {
 		return isCssLength(padding)
 	} else if (Array.isArray(padding)) {
 		return padding.length > 0 && padding.length < 5
-	} else if (typeof padding === 'object') {
+	} else if (typeof padding === "object") {
 		return Object.entries(padding).every(([key, value]) => {
 			return !!keyToProperty(key as keyof Padding) && isValidPadding(value)
 		})
@@ -86,14 +86,14 @@ export function getPaddingStyles(padding?: Padding) {
 			return [
 				`padding-inline: ${getPaddingValue(inline)}`,
 				`padding-block: ${getPaddingValue(block)};`,
-			].join(';')
+			].join(";")
 		} else if (padding.length === 3) {
 			const [blockStart, inline, blockEnd] = padding
 			return [
 				`padding-block-start: ${getPaddingValue(blockStart)}`,
 				`padding-inline: ${getPaddingValue(inline)}`,
 				`padding-block-end: ${getPaddingValue(blockEnd)};`,
-			].join(';')
+			].join(";")
 		} else {
 			const [blockStart, inlineEnd, blockEnd, inlineStart] = padding
 			return [
@@ -101,14 +101,14 @@ export function getPaddingStyles(padding?: Padding) {
 				`padding-inline-end: ${getPaddingValue(inlineEnd)}`,
 				`padding-block-end: ${getPaddingValue(blockEnd)}`,
 				`padding-inline-start: ${getPaddingValue(inlineStart)};`,
-			].join(';')
+			].join(";")
 		}
-	} else if (typeof padding === 'object') {
+	} else if (typeof padding === "object") {
 		const array = Object.entries(padding).map(([key, value]) => {
 			return `${keyToProperty(key as keyof Padding)}: ${parseCssLength(value as CSSLength)};`
 		})
 
-		return array.join(' ')
+		return array.join(" ")
 	} else {
 		return `padding: ${getPaddingValue(padding)};`
 	}

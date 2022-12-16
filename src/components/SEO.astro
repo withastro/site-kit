@@ -1,5 +1,5 @@
 ---
-import Show from './Show.astro'
+import Show from "./Show.astro"
 
 export type Image = {
 	src: string
@@ -18,7 +18,7 @@ export type OpenGraph = Partial<SEOMetadata> & {
 }
 export type Twitter = Partial<SEOMetadata> & {
 	handle?: string
-	card?: 'summary' | 'summary_large_image'
+	card?: "summary" | "summary_large_image"
 }
 export type Props = SEOMetadata & {
 	og?: OpenGraph
@@ -29,7 +29,7 @@ const {
 	title,
 	description,
 	image,
-	locale = 'en',
+	locale = "en",
 	canonicalURL = new URL(Astro.url.pathname, Astro.site),
 	og: _og = {},
 	twitter: _twitter = {},
@@ -42,7 +42,7 @@ const og: OpenGraph = {
 	canonicalURL,
 	image,
 	locale,
-	type: 'website',
+	type: "website",
 	..._og,
 }
 const twitter: Twitter = {
@@ -52,11 +52,11 @@ const twitter: Twitter = {
 	canonicalURL,
 	image,
 	locale,
-	card: 'summary_large_image',
+	card: "summary_large_image",
 	..._twitter,
 }
 
-const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/, '') + '/'
+const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/, "") + "/"
 ---
 
 <!-- Page Metadata -->

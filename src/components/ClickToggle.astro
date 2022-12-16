@@ -35,21 +35,21 @@ const { target, storageKey, attribute, on, off, classname } = Astro.props
 	class ClickToggle extends HTMLElement {
 		#onClick = this.toggle.bind(this)
 		connectedCallback() {
-			this.addEventListener('click', this.#onClick, true)
+			this.addEventListener("click", this.#onClick, true)
 
 			const target = this.dataset.target ? document.querySelector(this.dataset.target) : this
 			const attr = this.dataset.attr
-			const off = this.dataset.off || 'false'
+			const off = this.dataset.off || "false"
 
 			if (target && attr && !target.getAttribute(attr)) {
 				target.setAttribute(attr, off)
 			}
 		}
 		disconnectedCallback() {
-			this.removeEventListener('click', this.#onClick)
+			this.removeEventListener("click", this.#onClick)
 		}
 		get target(): keyof HTMLElementTagNameMap | undefined {
-			return this.getAttribute('target') as keyof HTMLElementTagNameMap | undefined
+			return this.getAttribute("target") as keyof HTMLElementTagNameMap | undefined
 		}
 		toggle() {
 			!!this.dataset.attr ? this.toggleAttr() : this.toggleClass()
@@ -67,8 +67,8 @@ const { target, storageKey, attribute, on, off, classname } = Astro.props
 			if (!target || !attr) {
 				return
 			}
-			const off = this.dataset.off || 'false'
-			const on = this.dataset.on || 'true'
+			const off = this.dataset.off || "false"
+			const on = this.dataset.on || "true"
 			const value = target.getAttribute(attr) == off ? on : off
 			target.setAttribute(attr, value)
 			if (this.dataset.storage) {
@@ -76,5 +76,5 @@ const { target, storageKey, attribute, on, off, classname } = Astro.props
 			}
 		}
 	}
-	customElements.define('click-toggle', ClickToggle)
+	customElements.define("click-toggle", ClickToggle)
 </script>

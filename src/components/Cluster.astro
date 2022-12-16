@@ -1,50 +1,50 @@
 ---
-import { joinStyles } from '../utils/styles.js'
-import { uid } from '../utils/uid.js'
-import type { Props as BaseProps } from './BaseComponent.astro'
-import Component from './BaseComponent.astro'
-import Show from './Show.astro'
+import { joinStyles } from "../utils/styles.js"
+import { uid } from "../utils/uid.js"
+import type { Props as BaseProps } from "./BaseComponent.astro"
+import Component from "./BaseComponent.astro"
+import Show from "./Show.astro"
 
 export type Props = BaseProps & {
-	justify?: 'start' | 'end' | 'center' | 'between' | 'around'
-	align?: 'start' | 'end' | 'center' | 'stretch'
+	justify?: "start" | "end" | "center" | "between" | "around"
+	align?: "start" | "end" | "center" | "stretch"
 	splitAfter?: number
 }
 
-function getJustify(value: Props['justify']) {
+function getJustify(value: Props["justify"]) {
 	if (!value) {
 		return undefined
 	}
 
 	switch (value) {
-		case 'end':
-			return 'flex-end'
-		case 'center':
-			return 'center'
-		case 'between':
-			return 'space-between'
-		case 'around':
-			return 'space-around'
-		case 'start':
+		case "end":
+			return "flex-end"
+		case "center":
+			return "center"
+		case "between":
+			return "space-between"
+		case "around":
+			return "space-around"
+		case "start":
 		default:
-			return 'flex-start'
+			return "flex-start"
 	}
 }
-function getAlign(value: Props['align']) {
+function getAlign(value: Props["align"]) {
 	if (!value) {
 		return undefined
 	}
 
 	switch (value) {
-		case 'end':
-			return 'flex-end'
-		case 'center':
-			return 'center'
-		case 'stretch':
-			return 'stretch'
-		case 'start':
+		case "end":
+			return "flex-end"
+		case "center":
+			return "center"
+		case "stretch":
+			return "stretch"
+		case "start":
 		default:
-			return 'flex-start'
+			return "flex-start"
 	}
 }
 
@@ -70,7 +70,7 @@ const inlineStyle =
 }`
 ---
 
-<Component id={id} class:list={['cluster', className]} style={componentStyle} {...attrs}>
+<Component id={id} class:list={["cluster", className]} style={componentStyle} {...attrs}>
 	<slot />
 </Component>
 

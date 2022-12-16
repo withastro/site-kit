@@ -1,15 +1,15 @@
 ---
-import type { CSSLength } from '../utils/css.js'
-import { parseCssLength } from '../utils/css.js'
-import { uid } from '../utils/uid.js'
-import type { Props as BaseProps } from './BaseComponent.astro'
-import Component from './BaseComponent.astro'
+import type { CSSLength } from "../utils/css.js"
+import { parseCssLength } from "../utils/css.js"
+import { uid } from "../utils/uid.js"
+import type { Props as BaseProps } from "./BaseComponent.astro"
+import Component from "./BaseComponent.astro"
 
 export type Props = BaseProps & {
 	minimum: CSSLength
 }
 
-const { minimum, id = uid(), class: className = '', ...attrs } = Astro.props
+const { minimum, id = uid(), class: className = "", ...attrs } = Astro.props
 
 const safeMinimum = parseCssLength(minimum)
 
@@ -20,7 +20,7 @@ const inlineStyle = `@supports (width: min(${safeMinimum}, 100%)) {
 }`
 ---
 
-<Component class:list={['grid', className]} id={id} {...attrs}>
+<Component class:list={["grid", className]} id={id} {...attrs}>
 	<slot />
 </Component>
 

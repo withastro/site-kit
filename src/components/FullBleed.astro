@@ -1,9 +1,9 @@
 ---
-import type { CSSLength } from '../utils/css.js'
-import { parseCssLength } from '../utils/css.js'
-import { joinStyles } from '../utils/styles.js'
-import type { Props as BaseProps } from './BaseComponent.astro'
-import Component from './BaseComponent.astro'
+import type { CSSLength } from "../utils/css.js"
+import { parseCssLength } from "../utils/css.js"
+import { joinStyles } from "../utils/styles.js"
+import type { Props as BaseProps } from "./BaseComponent.astro"
+import Component from "./BaseComponent.astro"
 
 export type Props = BaseProps & {
 	style?: string
@@ -12,11 +12,11 @@ export type Props = BaseProps & {
 	content?: boolean
 }
 
-const { gutter, maxWidth, content, class: className = '', style = '', ...attrs } = Astro.props
+const { gutter, maxWidth, content, class: className = "", style = "", ...attrs } = Astro.props
 
 const safeMaxWidth =
-	parseCssLength(maxWidth) || content ? 'var(--max-w-content)' : 'var(--max-w-layout)'
-const safeGutter = parseCssLength(gutter) || 'var(--gap-2)'
+	parseCssLength(maxWidth) || content ? "var(--max-w-content)" : "var(--max-w-layout)"
+const safeGutter = parseCssLength(gutter) || "var(--gap-2)"
 
 const componentStyle = joinStyles(
 	`grid-template-columns: 1fr min(${safeMaxWidth}, calc(100% - (2 * ${safeGutter}))) 1fr`,
@@ -24,7 +24,7 @@ const componentStyle = joinStyles(
 )
 ---
 
-<Component class:list={['full-bleed', className]} style={componentStyle} {...attrs}>
+<Component class:list={["full-bleed", className]} style={componentStyle} {...attrs}>
 	<slot />
 </Component>
 

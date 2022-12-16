@@ -3,11 +3,11 @@
 	--max-w-hero: 95ch;
 	--max-w-layout: 120ch;
 
-	--font-sans: system-ui, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-		'Helvetica Neue', sans-serif;
-	--font-serif: 'Apple Garamond', 'Baskerville', 'Times New Roman', 'Droid Serif', 'Times',
-		'Source Serif Pro', serif;
-	--font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', 'Source Code Pro',
+	--font-sans: system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+		"Helvetica Neue", sans-serif;
+	--font-serif: "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", "Times",
+		"Source Serif Pro", serif;
+	--font-mono: "SF Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono", "Source Code Pro",
 		monospace;
 
 	--leading-xs: 0.9;

@@ -1,5 +1,5 @@
 ---
-import Show from './Show.astro'
+import Show from "./Show.astro"
 
 export type Props<T> = {
 	each: Iterable<T>
@@ -10,7 +10,7 @@ const { each } = Astro.props
 
 {
 	each.map(async (value: unknown) => {
-		const html = await Astro.slots.render('default', [value])
+		const html = await Astro.slots.render("default", [value])
 		return <Fragment set:html={html} />
 	})
 }

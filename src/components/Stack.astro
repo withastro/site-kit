@@ -1,14 +1,14 @@
 ---
-import { uid } from '../utils/uid.js'
-import type { Props as BaseProps } from './BaseComponent.astro'
-import Component from './BaseComponent.astro'
-import Show from './Show.astro'
+import { uid } from "../utils/uid.js"
+import type { Props as BaseProps } from "./BaseComponent.astro"
+import Component from "./BaseComponent.astro"
+import Show from "./Show.astro"
 
 export type Props = BaseProps & {
 	splitAfter?: number
 }
 
-const { splitAfter, class: className = '', ...props } = Astro.props
+const { splitAfter, class: className = "", ...props } = Astro.props
 
 const { id = splitAfter ? uid() : undefined, ...attrs } = props
 
@@ -22,7 +22,7 @@ const inlineStyle =
 }`
 ---
 
-<Component class:list={['stack', className]} id={id} {...attrs}>
+<Component class:list={["stack", className]} id={id} {...attrs}>
 	<slot />
 </Component>
 
