@@ -1,30 +1,30 @@
 type LowercaseCharacter =
-	| 'a'
-	| 'b'
-	| 'c'
-	| 'd'
-	| 'e'
-	| 'f'
-	| 'g'
-	| 'h'
-	| 'i'
-	| 'j'
-	| 'k'
-	| 'l'
-	| 'm'
-	| 'n'
-	| 'o'
-	| 'p'
-	| 'q'
-	| 'r'
-	| 's'
-	| 't'
-	| 'u'
-	| 'v'
-	| 'w'
-	| 'x'
-	| 'y'
-	| 'z'
+	| "a"
+	| "b"
+	| "c"
+	| "d"
+	| "e"
+	| "f"
+	| "g"
+	| "h"
+	| "i"
+	| "j"
+	| "k"
+	| "l"
+	| "m"
+	| "n"
+	| "o"
+	| "p"
+	| "q"
+	| "r"
+	| "s"
+	| "t"
+	| "u"
+	| "v"
+	| "w"
+	| "x"
+	| "y"
+	| "z"
 type AllCharacter = LowercaseCharacter | Uppercase<LowercaseCharacter>
 type NonEmptyString = `${AllCharacter}${string}`
 
@@ -35,26 +35,26 @@ function isCustomPropertyShorthand(value: string): value is `--${NonEmptyString}
 }
 
 type LengthUnit =
-	| 'vmin'
-	| 'vmax'
-	| 'vh'
-	| 'vw'
-	| '%'
-	| 'ch'
-	| 'ex'
-	| 'em'
-	| 'rem'
-	| 'in'
-	| 'cm'
-	| 'mm'
-	| 'pt'
-	| 'pc'
-	| 'px'
+	| "vmin"
+	| "vmax"
+	| "vh"
+	| "vw"
+	| "%"
+	| "ch"
+	| "ex"
+	| "em"
+	| "rem"
+	| "in"
+	| "cm"
+	| "mm"
+	| "pt"
+	| "pc"
+	| "px"
 
 export type CSSLength = `${number}${LengthUnit}` | CSSCustomProperties
 
 export function isCssLength(string_: string): string_ is CSSLength {
-	if (typeof string_ !== 'string') {
+	if (typeof string_ !== "string") {
 		return false
 	}
 
@@ -70,7 +70,7 @@ export function parseCssLength(value: string | number | undefined | null): CSSLe
 		return undefined
 	}
 
-	return typeof value === 'number'
+	return typeof value === "number"
 		? value >= 0
 			? `${value}px`
 			: undefined

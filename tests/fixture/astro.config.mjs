@@ -1,16 +1,16 @@
-import { defineConfig } from 'astro/config'
-import image from '@astrojs/image'
+import { defineConfig } from "astro/config"
+import image from "@astrojs/image"
 
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
 		image({
-			serviceEntryPoint: '@astrojs/image/sharp',
+			serviceEntryPoint: "@astrojs/image/sharp",
 		}),
 	],
 	vite: {
 		ssr: {
-			noExternal: ['smartypants'],
+			noExternal: ["smartypants"],
 		},
 	},
 })

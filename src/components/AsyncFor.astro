@@ -1,5 +1,5 @@
 ---
-import Show from './Show.astro'
+import Show from "./Show.astro"
 
 export type Props<T> = {
 	each: Iterable<T>
@@ -11,9 +11,9 @@ const { each } = Astro.props
 {
 	(async function* () {
 		for await (const value of each) {
-			let html = await Astro.slots.render('default', [value])
+			let html = await Astro.slots.render("default", [value])
 			yield <Fragment set:html={html} />
-			yield '\n'
+			yield "\n"
 		}
 	})()
 }

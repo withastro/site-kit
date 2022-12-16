@@ -1,38 +1,38 @@
 ---
-import type { CSSLength } from '../utils/css.js'
-import { parseCssLength } from '../utils/css.js'
-import { uid } from '../utils/uid.js'
-import type { Props as BaseProps } from './BaseComponent.astro'
-import Component from './BaseComponent.astro'
+import type { CSSLength } from "../utils/css.js"
+import { parseCssLength } from "../utils/css.js"
+import { uid } from "../utils/uid.js"
+import type { Props as BaseProps } from "./BaseComponent.astro"
+import Component from "./BaseComponent.astro"
 
 export type Props = BaseProps & {
-	fraction?: `${number}/${number}` | `${number} / ${number}` | 'auto-start' | 'auto-end'
+	fraction?: `${number}/${number}` | `${number} / ${number}` | "auto-start" | "auto-end"
 	threshold?: CSSLength
 }
 
 const FRACTION_PATTERN = /(?:[1-9][0-9]*|0).?\/.?[1-9][0-9]*/g
-function getFraction(value: Props['fraction']) {
+function getFraction(value: Props["fraction"]) {
 	if (!value) {
-		return '1fr 1fr'
+		return "1fr 1fr"
 	} else if (value.match(FRACTION_PATTERN)) {
-		const [start, end] = value.split('/')
+		const [start, end] = value.split("/")
 		const startNum = parseInt(start)
 		const endNum = parseInt(end)
 		return `${startNum / endNum}fr ${(endNum - startNum) / endNum}fr`
-	} else if (value === 'auto-start') {
-		return 'auto 1fr'
-	} else if (value === 'auto-end') {
-		return '1fr auto'
+	} else if (value === "auto-start") {
+		return "auto 1fr"
+	} else if (value === "auto-end") {
+		return "1fr auto"
 	} else {
-		return '1fr 2fr'
+		return "1fr 2fr"
 	}
 }
 
 const {
 	id = uid(),
-	fraction = '1/2',
-	threshold = '0px',
-	class: className = '',
+	fraction = "1/2",
+	threshold = "0px",
+	class: className = "",
 	...attrs
 } = Astro.props
 
@@ -47,7 +47,7 @@ const inlineStyle = `
 `
 ---
 
-<Component id={id} class:list={['split', className]} {...attrs}>
+<Component id={id} class:list={["split", className]} {...attrs}>
 	<slot />
 </Component>
 

@@ -65,8 +65,8 @@ jobs:
         with:
           node-version: 16
           publish: pnpm changeset publish
-          commit: '[ci] release'
-          title: '[ci] release'
+          commit: "[ci] release"
+          title: "[ci] release"
         env:
           # Needs access to push to main
           GITHUB_TOKEN: ${{ secrets.FREDKBOT_GITHUB_TOKEN }}
