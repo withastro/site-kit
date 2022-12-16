@@ -5,10 +5,10 @@ import { uid } from '../utils/uid.js'
 import type { Props as BaseProps } from './BaseComponent.astro'
 import Component from './BaseComponent.astro'
 
-export type Props = {
+export type Props = BaseProps & {
 	fraction?: `${number}/${number}` | `${number} / ${number}` | 'auto-start' | 'auto-end'
 	threshold?: CSSLength
-} & BaseProps
+}
 
 const FRACTION_PATTERN = /(?:[1-9][0-9]*|0).?\/.?[1-9][0-9]*/g
 function getFraction(value: Props['fraction']) {

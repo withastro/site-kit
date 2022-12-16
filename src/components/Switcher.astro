@@ -1,13 +1,13 @@
 ---
-import Component from './BaseComponent.astro'
-import type { Props as BaseProps } from './BaseComponent.astro'
-import { parseCssLength } from '../utils/css.js'
 import type { CSSLength } from '../utils/css.js'
+import { parseCssLength } from '../utils/css.js'
 import { uid } from '../utils/uid.js'
+import type { Props as BaseProps } from './BaseComponent.astro'
+import Component from './BaseComponent.astro'
 
-export type Props = {
+export type Props = BaseProps & {
 	threshold: CSSLength
-} & BaseProps
+}
 
 const { threshold, id = uid(), class: className = '', ...attrs } = Astro.props
 

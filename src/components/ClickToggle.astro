@@ -3,18 +3,18 @@ type BaseProps = {
 	target?: string
 	storageKey?: string
 }
-export type AttributeProps = {
+export type AttributeProps = BaseProps & {
 	attribute: string
 	on?: string
 	off?: string
 	classname: never
-} & BaseProps
-export type ClassProps = {
+}
+export type ClassProps = BaseProps & {
 	classname: string
 	attribute: never
 	on: never
 	off: never
-} & BaseProps
+}
 export type Props = AttributeProps | ClassProps
 
 const { target, storageKey, attribute, on, off, classname } = Astro.props

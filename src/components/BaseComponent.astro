@@ -6,13 +6,13 @@ import type { Padding } from '../utils/padding.js'
 import { getPaddingStyles } from '../utils/padding.js'
 import { joinStyles } from '../utils/styles.js'
 
-export type Props = {
+export type Props = HTMLAttributes<'div'> & {
 	as?: HTMLTag
 	gap?: CSSLength | number
 	padding?: Padding
 	style?: string
 	slot?: string
-} & HTMLAttributes<'div'>
+}
 
 const {
 	as: Component = 'div',

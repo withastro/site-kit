@@ -1,12 +1,12 @@
 ---
-import Component from './BaseComponent.astro'
-import type { Props as BaseProps } from './BaseComponent.astro'
-import Show from './Show.astro'
 import { uid } from '../utils/uid.js'
+import type { Props as BaseProps } from './BaseComponent.astro'
+import Component from './BaseComponent.astro'
+import Show from './Show.astro'
 
-export type Props = {
+export type Props = BaseProps & {
 	splitAfter?: number
-} & BaseProps
+}
 
 const { splitAfter, class: className = '', ...props } = Astro.props
 

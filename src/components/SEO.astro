@@ -13,17 +13,17 @@ export type SEOMetadata = {
 	canonicalURL?: URL | string
 	locale?: string
 }
-export type OpenGraph = {
+export type OpenGraph = Partial<SEOMetadata> & {
 	type?: string
-} & Partial<SEOMetadata>
-export type Twitter = {
+}
+export type Twitter = Partial<SEOMetadata> & {
 	handle?: string
 	card?: 'summary' | 'summary_large_image'
-} & Partial<SEOMetadata>
-export type Props = {
+}
+export type Props = SEOMetadata & {
 	og?: OpenGraph
 	twitter?: Twitter
-} & SEOMetadata
+}
 const {
 	name,
 	title,

@@ -6,10 +6,10 @@ import Component from './BaseComponent.astro'
 // prettier-ignore
 export type Ratio = `${number}/${number}` | `${number} / ${number}` | `${number}:${number}` | `${number} : ${number}` | [number, number];
 
-export type Props = {
+export type Props = BaseProps & {
 	ratio: Ratio
 	gap?: never
-} & BaseProps
+}
 
 const FRACTION_PATTERN = /^\d+\/\d+$/
 const ASPECT_PATTERN = /^\d+\:\d+$/

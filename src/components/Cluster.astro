@@ -5,11 +5,11 @@ import type { Props as BaseProps } from './BaseComponent.astro'
 import Component from './BaseComponent.astro'
 import Show from './Show.astro'
 
-export type Props = {
+export type Props = BaseProps & {
 	justify?: 'start' | 'end' | 'center' | 'between' | 'around'
 	align?: 'start' | 'end' | 'center' | 'stretch'
 	splitAfter?: number
-} & BaseProps
+}
 
 function getJustify(value: Props['justify']) {
 	if (!value) {

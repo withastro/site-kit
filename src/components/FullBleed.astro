@@ -5,12 +5,12 @@ import { joinStyles } from '../utils/styles.js'
 import type { Props as BaseProps } from './BaseComponent.astro'
 import Component from './BaseComponent.astro'
 
-export type Props = {
+export type Props = BaseProps & {
 	style?: string
 	gutter?: CSSLength
 	maxWidth?: CSSLength
 	content?: boolean
-} & BaseProps
+}
 
 const { gutter, maxWidth, content, class: className = '', style = '', ...attrs } = Astro.props
 
