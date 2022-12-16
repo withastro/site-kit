@@ -1,64 +1,64 @@
 ---
-import Component from './BaseComponent.astro';
-import type { Props as BaseProps } from './BaseComponent.astro';
-import { joinStyles } from '../utils/styles.js';
-import { uid } from '../utils/uid.js';
-import Show from './Show.astro';
+import { joinStyles } from '../utils/styles.js'
+import { uid } from '../utils/uid.js'
+import type { Props as BaseProps } from './BaseComponent.astro'
+import Component from './BaseComponent.astro'
+import Show from './Show.astro'
 
-export interface Props extends BaseProps {
-	justify?: 'start' | 'end' | 'center' | 'between' | 'around';
-	align?: 'start' | 'end' | 'center' | 'stretch';
-	splitAfter?: number;
+export type Props = BaseProps & {
+	justify?: 'start' | 'end' | 'center' | 'between' | 'around'
+	align?: 'start' | 'end' | 'center' | 'stretch'
+	splitAfter?: number
 }
 
 function getJustify(value: Props['justify']) {
 	if (!value) {
-		return undefined;
+		return undefined
 	}
 
 	switch (value) {
 		case 'end':
-			return 'flex-end';
+			return 'flex-end'
 		case 'center':
-			return 'center';
+			return 'center'
 		case 'between':
-			return 'space-between';
+			return 'space-between'
 		case 'around':
-			return 'space-around';
+			return 'space-around'
 		case 'start':
 		default:
-			return 'flex-start';
+			return 'flex-start'
 	}
 }
 function getAlign(value: Props['align']) {
 	if (!value) {
-		return undefined;
+		return undefined
 	}
 
 	switch (value) {
 		case 'end':
-			return 'flex-end';
+			return 'flex-end'
 		case 'center':
-			return 'center';
+			return 'center'
 		case 'stretch':
-			return 'stretch';
+			return 'stretch'
 		case 'start':
 		default:
-			return 'flex-start';
+			return 'flex-start'
 	}
 }
 
-const { splitAfter, justify, align, class: className, style, ...props } = Astro.props;
-const { id = splitAfter ? uid() : undefined, ...attrs } = Astro.props;
+const { splitAfter, justify, align, class: className, style } = Astro.props
+const { id = splitAfter ? uid() : undefined, ...attrs } = Astro.props
 
-const safeJustify = getJustify(justify);
-const safeAlign = getAlign(align);
+const safeJustify = getJustify(justify)
+const safeAlign = getAlign(align)
 
 const componentStyle = joinStyles(
 	safeJustify && `justify-content: ${safeJustify}`,
 	safeAlign && `align-items: ${safeAlign}`,
-	style
-);
+	style,
+)
 
 const inlineStyle =
 	splitAfter &&
@@ -67,7 +67,7 @@ const inlineStyle =
 }
 #${id} > :nth-child(${splitAfter}) {
 	margin-inline-end: auto;
-}`;
+}`
 ---
 
 <Component id={id} class:list={['cluster', className]} style={componentStyle} {...attrs}>

@@ -1,21 +1,21 @@
 ---
-import Layout from '../layouts/Base.astro';
-import '@astrojs/site-kit/assets/css/reset.css';
-import '@astrojs/site-kit/assets/css/theme.css';
-import For from '@astrojs/site-kit/components/For.astro';
-import Stack from '@astrojs/site-kit/components/Stack.astro';
+import '@astrojs/site-kit/assets/css/reset.css'
+import '@astrojs/site-kit/assets/css/theme.css'
+import For from '@astrojs/site-kit/components/For.astro'
+import Stack from '@astrojs/site-kit/components/Stack.astro'
+import Layout from '../layouts/Base.astro'
 
-const components = await Astro.glob('./components/*.astro');
+const components = await Astro.glob('./components/*.astro')
 
-interface Route {
-	href: string;
-	text: string;
+type Route = {
+	href: string
+	text: string
 }
 
 const componentRoutes = components.map(({ url }) => ({
 	href: url!,
 	text: url!.split('/').filter(Boolean)[1].replace('-', ' '),
-}));
+}))
 ---
 
 <Layout title="Site Kit">

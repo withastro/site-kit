@@ -24,14 +24,14 @@ type LowercaseCharacter =
 	| 'w'
 	| 'x'
 	| 'y'
-	| 'z';
-type AllCharacter = LowercaseCharacter | Uppercase<LowercaseCharacter>;
-type NonEmptyString = `${AllCharacter}${string}`;
+	| 'z'
+type AllCharacter = LowercaseCharacter | Uppercase<LowercaseCharacter>
+type NonEmptyString = `${AllCharacter}${string}`
 
-type CSSCustomProperties = `var(--${NonEmptyString})` | `--${NonEmptyString}`;
+type CSSCustomProperties = `var(--${NonEmptyString})` | `--${NonEmptyString}`
 
 function isCustomPropertyShorthand(value: string): value is `--${NonEmptyString}` {
-	return /^--\D{1,100}/.test(value);
+	return /^--\D{1,100}/.test(value)
 }
 
 type LengthUnit =
@@ -49,25 +49,25 @@ type LengthUnit =
 	| 'mm'
 	| 'pt'
 	| 'pc'
-	| 'px';
+	| 'px'
 
-export type CSSLength = `${number}${LengthUnit}` | CSSCustomProperties;
+export type CSSLength = `${number}${LengthUnit}` | CSSCustomProperties
 
 export function isCssLength(string_: string): string_ is CSSLength {
 	if (typeof string_ !== 'string') {
-		return false;
+		return false
 	}
 
 	return [
 		/^\d{0,10000}\.?\d{1,10000}(vmin|vmax|vh|vw|%|ch|ex|em|rem|in|cm|mm|pt|pc|px)$/,
 		/^var\(--\S{1,100}\)$/,
 		/^--\S{1,100}/,
-	].some((regex) => regex.test(string_));
+	].some((regex) => regex.test(string_))
 }
 
 export function parseCssLength(value: string | number | undefined | null): CSSLength | undefined {
 	if (!value) {
-		return undefined;
+		return undefined
 	}
 
 	return typeof value === 'number'
@@ -78,5 +78,5 @@ export function parseCssLength(value: string | number | undefined | null): CSSLe
 		? isCustomPropertyShorthand(value)
 			? `var(${value})`
 			: value
-		: undefined;
+		: undefined
 }

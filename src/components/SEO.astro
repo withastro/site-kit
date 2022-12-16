@@ -1,28 +1,28 @@
 ---
-import Show from './Show.astro';
+import Show from './Show.astro'
 
-export interface Image {
-	src: string;
-	alt: string;
+export type Image = {
+	src: string
+	alt: string
 }
-export interface SEOMetadata {
-	name: string;
-	title: string;
-	description: string;
-	image: Image;
-	canonicalURL?: URL | string;
-	locale?: string;
+export type SEOMetadata = {
+	name: string
+	title: string
+	description: string
+	image: Image
+	canonicalURL?: URL | string
+	locale?: string
 }
-export interface OpenGraph extends Partial<SEOMetadata> {
-	type?: string;
+export type OpenGraph = Partial<SEOMetadata> & {
+	type?: string
 }
-export interface Twitter extends Partial<SEOMetadata> {
-	handle?: string;
-	card?: 'summary' | 'summary_large_image';
+export type Twitter = Partial<SEOMetadata> & {
+	handle?: string
+	card?: 'summary' | 'summary_large_image'
 }
-export interface Props extends SEOMetadata {
-	og?: OpenGraph;
-	twitter?: Twitter;
+export type Props = SEOMetadata & {
+	og?: OpenGraph
+	twitter?: Twitter
 }
 const {
 	name,
@@ -33,7 +33,7 @@ const {
 	canonicalURL = new URL(Astro.url.pathname, Astro.site),
 	og: _og = {},
 	twitter: _twitter = {},
-} = Astro.props as Props;
+} = Astro.props as Props
 
 const og: OpenGraph = {
 	name,
@@ -44,7 +44,7 @@ const og: OpenGraph = {
 	locale,
 	type: 'website',
 	..._og,
-};
+}
 const twitter: Twitter = {
 	name,
 	title,
@@ -54,9 +54,9 @@ const twitter: Twitter = {
 	locale,
 	card: 'summary_large_image',
 	..._twitter,
-};
+}
 
-const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/, '') + '/';
+const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/, '') + '/'
 ---
 
 <!-- Page Metadata -->

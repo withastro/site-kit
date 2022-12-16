@@ -1,5 +1,5 @@
-let id = 1;
+let id = 1
 
 export function uid() {
-	return `ab-${id++}`;
+	return `ab-${id++}`
 }

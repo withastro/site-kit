@@ -1,16 +1,16 @@
 ---
-import Component from './BaseComponent.astro';
-import type { Props as BaseProps } from './BaseComponent.astro';
-import Show from './Show.astro';
-import { uid } from '../utils/uid.js';
+import { uid } from '../utils/uid.js'
+import type { Props as BaseProps } from './BaseComponent.astro'
+import Component from './BaseComponent.astro'
+import Show from './Show.astro'
 
-export interface Props extends BaseProps {
-	splitAfter?: number;
+export type Props = BaseProps & {
+	splitAfter?: number
 }
 
-const { splitAfter, class: className = '', ...props } = Astro.props;
+const { splitAfter, class: className = '', ...props } = Astro.props
 
-const { id = splitAfter ? uid() : undefined, ...attrs } = props;
+const { id = splitAfter ? uid() : undefined, ...attrs } = props
 
 const inlineStyle =
 	splitAfter &&
@@ -19,7 +19,7 @@ const inlineStyle =
 }
 #${id} > :nth-child(${splitAfter}) {
 	margin-block-end: auto;
-}`;
+}`
 ---
 
 <Component class:list={['stack', className]} id={id} {...attrs}>

@@ -1,21 +1,21 @@
 ---
-import { getImage } from '@astrojs/image';
-import SEO from './SEO.astro';
-import smartypants from 'smartypants';
+import { getImage } from '@astrojs/image'
+import smartypants from 'smartypants'
+import SEO from './SEO.astro'
 
-export interface Props {
-	siteName: string;
-	title?: string;
-	description: string;
+export type Props = {
+	siteName: string
+	title?: string
+	description: string
 	image: {
-		src: string;
-		alt: string;
-	};
-	canonicalURL?: URL;
-	pageType?: 'website' | 'article';
+		src: string
+		alt: string
+	}
+	canonicalURL?: URL
+	pageType?: 'website' | 'article'
 }
 
-const twitterHandle = 'astrodotbuild';
+const twitterHandle = 'astrodotbuild'
 
 const {
 	description,
@@ -23,21 +23,22 @@ const {
 	canonicalURL = new URL(Astro.request.url, Astro.site),
 	pageType = 'website',
 	siteName,
-} = Astro.props as Props;
+} = Astro.props as Props
 
 const resolvedImage = await getImage({
 	src: image.src,
+	alt: image.alt,
 	width: 1200,
 	aspectRatio: 2,
 	format: 'jpeg',
-});
+})
 
 if (!resolvedImage.src) {
-	throw new Error(`[BaseHead.astro] Could not resolve image "${image.src}"`);
+	throw new Error(`[BaseHead.astro] Could not resolve image "${image.src}"`)
 }
 
-const resolvedImageWithDomain = new URL(resolvedImage.src, Astro.url).toString();
-const title = [Astro.props.title, siteName].filter(Boolean).join(' | ');
+const resolvedImageWithDomain = new URL(resolvedImage.src, Astro.url).toString()
+const title = [Astro.props.title, siteName].filter(Boolean).join(' | ')
 ---
 
 <!-- Global Metadata -->
