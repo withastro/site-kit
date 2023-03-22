@@ -30,7 +30,9 @@ type NonEmptyString = `${AllCharacter}${string}`
 
 type CSSCustomProperties = `var(--${NonEmptyString})` | `--${NonEmptyString}`
 
-function isCustomPropertyShorthand(value: string): value is `--${NonEmptyString}` {
+function isCustomPropertyShorthand(
+	value: string,
+): value is `--${NonEmptyString}` {
 	return /^--\D{1,100}/.test(value)
 }
 
@@ -65,7 +67,9 @@ export function isCssLength(string_: string): string_ is CSSLength {
 	].some((regex) => regex.test(string_))
 }
 
-export function parseCssLength(value: string | number | undefined | null): CSSLength | undefined {
+export function parseCssLength(
+	value: string | number | undefined | null,
+): CSSLength | undefined {
 	if (!value) {
 		return undefined
 	}

@@ -70,7 +70,12 @@ const inlineStyle =
 }`
 ---
 
-<Component id={id} class:list={["cluster", className]} style={componentStyle} {...attrs}>
+<Component
+	id={id}
+	class:list={["cluster", className]}
+	style={componentStyle}
+	{...attrs}
+>
 	<slot />
 </Component>
 

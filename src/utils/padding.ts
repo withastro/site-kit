@@ -71,7 +71,9 @@ export function getPaddingStyles(padding?: Padding) {
 	}
 
 	if (Array.isArray(padding) && padding.length > 4) {
-		throw new Error(`padding arrays can't be longer than 4, found ${padding.length}`)
+		throw new Error(
+			`padding arrays can't be longer than 4, found ${padding.length}`,
+		)
 	}
 
 	if (!isValidPadding(padding)) {
@@ -105,7 +107,9 @@ export function getPaddingStyles(padding?: Padding) {
 		}
 	} else if (typeof padding === "object") {
 		const array = Object.entries(padding).map(([key, value]) => {
-			return `${keyToProperty(key as keyof Padding)}: ${parseCssLength(value as CSSLength)};`
+			return `${keyToProperty(key as keyof Padding)}: ${parseCssLength(
+				value as CSSLength,
+			)};`
 		})
 
 		return array.join(" ")

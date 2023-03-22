@@ -37,7 +37,9 @@ const { target, storageKey, attribute, on, off, classname } = Astro.props
 		connectedCallback() {
 			this.addEventListener("click", this.#onClick, true)
 
-			const target = this.dataset.target ? document.querySelector(this.dataset.target) : this
+			const target = this.dataset.target
+				? document.querySelector(this.dataset.target)
+				: this
 			const attr = this.dataset.attr
 			const off = this.dataset.off || "false"
 
@@ -49,20 +51,26 @@ const { target, storageKey, attribute, on, off, classname } = Astro.props
 			this.removeEventListener("click", this.#onClick)
 		}
 		get target(): keyof HTMLElementTagNameMap | undefined {
-			return this.getAttribute("target") as keyof HTMLElementTagNameMap | undefined
+			return this.getAttribute("target") as
+				| keyof HTMLElementTagNameMap
+				| undefined
 		}
 		toggle() {
 			!!this.dataset.attr ? this.toggleAttr() : this.toggleClass()
 		}
 		toggleClass() {
-			const target = this.dataset.target ? document.querySelector(this.dataset.target) : this
+			const target = this.dataset.target
+				? document.querySelector(this.dataset.target)
+				: this
 			if (!target || !this.dataset.class) {
 				return
 			}
 			target.classList.toggle(this.dataset.class)
 		}
 		toggleAttr() {
-			const target = this.dataset.target ? document.querySelector(this.dataset.target) : this
+			const target = this.dataset.target
+				? document.querySelector(this.dataset.target)
+				: this
 			const attr = this.dataset.attr
 			if (!target || !attr) {
 				return

@@ -13,5 +13,7 @@ test("<Split />", async ({ page }) => {
 	expect(await page.screenshot()).toMatchSnapshot("components-split-tablet.png")
 
 	await page.setViewportSize({ width: 1920, height: 1080 })
-	expect(await page.screenshot()).toMatchSnapshot("components-split-desktop.png")
+	expect(await page.screenshot()).toMatchSnapshot(
+		"components-split-desktop.png",
+	)
 })

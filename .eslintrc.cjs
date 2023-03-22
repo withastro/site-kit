@@ -16,9 +16,14 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/array-type": ["error", { default: "array-simple" }],
     "@typescript-eslint/consistent-type-definitions": ["error", "type"],
-    "@typescript-eslint/consistent-type-imports": ["error", { fixStyle: "inline-type-imports" }],
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      { fixStyle: "inline-type-imports" },
+    ],
     "@typescript-eslint/no-floating-promises": "warn",
     "@typescript-eslint/no-redeclare": "warn",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "no-console": ["error", { allow: ["warn", "error", "info"] }],
     "no-useless-rename": "error",
     "object-shorthand": "error",
@@ -29,6 +34,7 @@ module.exports = {
       parser: "astro-eslint-parser",
       parserOptions: {
         parser: "@typescript-eslint/parser",
+        extraFileExtensions: [".astro"],
       },
       rules: {},
     },
