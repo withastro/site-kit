@@ -56,7 +56,8 @@ const twitter: Twitter = {
 	..._twitter,
 }
 
-const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/, "") + "/"
+const ensureTrailingSlash = (url: string | URL) =>
+	url.toString().replace(/\/$/, "") + "/"
 ---
 
 <!-- Page Metadata -->

@@ -6,7 +6,11 @@ import type { Props as BaseProps } from "./BaseComponent.astro"
 import Component from "./BaseComponent.astro"
 
 export type Props = BaseProps & {
-	fraction?: `${number}/${number}` | `${number} / ${number}` | "auto-start" | "auto-end"
+	fraction?:
+		| `${number}/${number}`
+		| `${number} / ${number}`
+		| "auto-start"
+		| "auto-end"
 	threshold?: CSSLength
 }
 

@@ -12,10 +12,19 @@ export type Props = BaseProps & {
 	content?: boolean
 }
 
-const { gutter, maxWidth, content, class: className = "", style = "", ...attrs } = Astro.props
+const {
+	gutter,
+	maxWidth,
+	content,
+	class: className = "",
+	style = "",
+	...attrs
+} = Astro.props
 
 const safeMaxWidth =
-	parseCssLength(maxWidth) || content ? "var(--max-w-content)" : "var(--max-w-layout)"
+	parseCssLength(maxWidth) || content
+		? "var(--max-w-content)"
+		: "var(--max-w-layout)"
 const safeGutter = parseCssLength(gutter) || "var(--gap-2)"
 
 const componentStyle = joinStyles(
@@ -24,7 +33,11 @@ const componentStyle = joinStyles(
 )
 ---
 
-<Component class:list={["full-bleed", className]} style={componentStyle} {...attrs}>
+<Component
+	class:list={["full-bleed", className]}
+	style={componentStyle}
+	{...attrs}
+>
 	<slot />
 </Component>
 

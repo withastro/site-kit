@@ -27,7 +27,11 @@ const {
 const safeGap = parseCssLength(gap)
 const safePadding = getPaddingStyles(padding)
 
-const componentStyle = joinStyles(safeGap && `gap: ${safeGap};`, safePadding, style)
+const componentStyle = joinStyles(
+	safeGap && `gap: ${safeGap};`,
+	safePadding,
+	style,
+)
 ---
 
 <Component slot={slot} style={componentStyle} class={className} {...attrs}>
