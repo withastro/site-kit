@@ -5,7 +5,7 @@ type SEOMetadata = {
 	name: string
 	title: string
 	description: string
-	image: { src: string, alt: string }
+	image: { src: string; alt: string }
 	canonicalURL?: URL | null
 	locale?: string
 }
@@ -72,33 +72,43 @@ const ensureTrailingSlash = (url: string | URL) =>
 
 <!-- Page Metadata -->
 <meta name="generator" content={Astro.generator} />
-{canonicalURL && (
-	<link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />
-)}
+{
+	canonicalURL && (
+		<link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />
+	)
+}
 <title>{title}</title>
 
 <!-- OpenGraph Tags -->
 <meta property="og:title" content={og.title} />
 <meta property="og:type" content={og.type} />
-<meta property="og:url" content={ensureTrailingSlash(og.canonicalURL!)} />
+{
+	og.canonicalURL && (
+		<meta property="og:url" content={ensureTrailingSlash(og.canonicalURL)} />
+	)
+}
 <meta property="og:locale" content={og.locale} />
 <meta property="og:description" content={og.description} />
 <meta property="og:site_name" content={og.name} />
-{og.image && (
-	<meta property="og:image" content={og.image.src} />
-	<meta property="og:image:alt" content={og.image.alt} />
-)}
+{
+	og.image && (
+		<>
+			<meta property="og:image" content={og.image.src} />
+			<meta property="og:image:alt" content={og.image.alt} />
+		</>
+	)
+}
 
 <!-- Twitter Tags -->
-{twitter.card && (
-	<meta name="twitter:card" content={twitter.card} />
-)}
-{twitter.handle && (
-	<meta name="twitter:site" content={twitter.handle} />
-)}
+{twitter.card && <meta name="twitter:card" content={twitter.card} />}
+{twitter.handle && <meta name="twitter:site" content={twitter.handle} />}
 <meta name="twitter:title" content={twitter.title} />
 <meta name="twitter:description" content={twitter.description} />
-{twitter.image && (
-	<meta name="twitter:image" content={twitter.image!.src} />
-	<meta name="twitter:image:alt" content={twitter.image!.alt} />
-)}
+{
+	twitter.image && (
+		<>
+			<meta name="twitter:image" content={twitter.image.src} />
+			<meta name="twitter:image:alt" content={twitter.image.alt} />
+		</>
+	)
+}
