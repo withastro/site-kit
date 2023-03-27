@@ -1,32 +1,29 @@
 ---
-import Show from "./Show.astro"
+import smartypants from "smartypants"
 
-export type Image = {
-	src: string
-	alt: string
-}
-export type SEOMetadata = {
+type SEOMetadata = {
 	name: string
 	title: string
 	description: string
-	image: Image
-	canonicalURL?: URL | string
+	image: { src: string, alt: string }
+	canonicalURL?: URL | null
 	locale?: string
 }
-export type OpenGraph = Partial<SEOMetadata> & {
+type OpenGraph = Partial<SEOMetadata> & {
 	type?: string
 }
-export type Twitter = Partial<SEOMetadata> & {
+type Twitter = Partial<SEOMetadata> & {
 	handle?: string
 	card?: "summary" | "summary_large_image"
 }
+
 export type Props = SEOMetadata & {
 	og?: OpenGraph
 	twitter?: Twitter
 }
+
 const {
 	name,
-	title,
 	description,
 	image,
 	locale = "en",
@@ -34,6 +31,8 @@ const {
 	og: _og = {},
 	twitter: _twitter = {},
 } = Astro.props as Props
+
+const title = [Astro.props.title, name].filter(Boolean).join(" | ")
 
 const og: OpenGraph = {
 	name,
@@ -60,9 +59,22 @@ const ensureTrailingSlash = (url: string | URL) =>
 	url.toString().replace(/\/$/, "") + "/"
 ---
 
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="generator" content={Astro.generator} />
+<meta name="viewport" content="width=device-width" />
+<meta name="theme-color" content="#8D46E7" />
+<link rel="mask-icon" href="/favicon.svg" color="#8D46E7" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
+
+<title set:html={smartypants(title, 1)} />
+
 <!-- Page Metadata -->
 <meta name="generator" content={Astro.generator} />
-<link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />
+{canonicalURL && (
+	<link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />
+)}
 <title>{title}</title>
 
 <!-- OpenGraph Tags -->
@@ -72,21 +84,21 @@ const ensureTrailingSlash = (url: string | URL) =>
 <meta property="og:locale" content={og.locale} />
 <meta property="og:description" content={og.description} />
 <meta property="og:site_name" content={og.name} />
-<Show when={og.image}>
-	<meta property="og:image" content={og.image!.src} />
-	<meta property="og:image:alt" content={og.image!.alt} />
-</Show>
+{og.image && (
+	<meta property="og:image" content={og.image.src} />
+	<meta property="og:image:alt" content={og.image.alt} />
+)}
 
 <!-- Twitter Tags -->
-<Show when={twitter.card}>
+{twitter.card && (
 	<meta name="twitter:card" content={twitter.card} />
-</Show>
-<Show when={twitter.handle}>
+)}
+{twitter.handle && (
 	<meta name="twitter:site" content={twitter.handle} />
-</Show>
+)}
 <meta name="twitter:title" content={twitter.title} />
 <meta name="twitter:description" content={twitter.description} />
-<Show when={twitter.image}>
+{twitter.image && (
 	<meta name="twitter:image" content={twitter.image!.src} />
 	<meta name="twitter:image:alt" content={twitter.image!.alt} />
-</Show>
+)}
