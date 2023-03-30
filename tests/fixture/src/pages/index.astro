@@ -1,11 +1,7 @@
 ---
-import "@astrojs/site-kit/assets/css/reset.css"
-import "@astrojs/site-kit/assets/css/theme.css"
-import For from "@astrojs/site-kit/components/For.astro"
-import Stack from "@astrojs/site-kit/components/Stack.astro"
 import Layout from "../layouts/Base.astro"
 
-const components = await Astro.glob("./components/*.astro")
+const components = await Astro.glob("./components/**/*.astro")
 
 type Route = {
 	href: string
@@ -19,22 +15,18 @@ const componentRoutes = components.map(({ url }) => ({
 ---
 
 <Layout title="Site Kit">
-	<Stack class="test" gap="--gap-1" splitAfter={2} style="height: 100%;">
-		<h2>Components</h2>
-		<Stack as="ul" gap="--gap-1">
-			<For each={componentRoutes}>
-				{
-					({ href, text }: Route) => (
-						<li>
-							<a href={href} class="h5">
-								{text}
-							</a>
-						</li>
-					)
-				}
-			</For>
-		</Stack>
-	</Stack>
+	<h2>Components</h2>
+	<ul>
+		{
+			componentRoutes.map(({ href, text }: Route) => (
+				<li>
+					<a href={href} class="h5">
+						{text}
+					</a>
+				</li>
+			))
+		}
+	</ul>
 </Layout>
 
 <style>
