@@ -1,7 +1,8 @@
 ---
-import Layout from "../layouts/Base.astro"
+import path from "node:path"
+import Layout from "../../../layouts/Base.astro"
 
-const components = await Astro.glob("./components/**/index.astro")
+const components = await Astro.glob("./*.astro")
 
 type Route = {
 	href: string
@@ -10,12 +11,12 @@ type Route = {
 
 const componentRoutes = components.map(({ url }) => ({
 	href: url!,
-	text: url!.split("/").filter(Boolean)[1].replace("-", " "),
+	text: path.basename(url!),
 }))
 ---
 
 <Layout title="Site Kit">
-	<h2>Components</h2>
+	<h2><code>&lt;SEO /&gt;</code></h2>
 	<ul>
 		{
 			componentRoutes.map(({ href, text }: Route) => (
