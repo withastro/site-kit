@@ -27,6 +27,8 @@
     "src",
     ".eslintrc.js",
     ".prettierrc.cjs",
+    "tailwind.config.cjs",
+    "tailwind.css",
     "tsconfig.json"
   ],
   "scripts": {
