@@ -1,5 +1,4 @@
 ---
-import { getImage } from "@astrojs/image"
 import smartypants from "smartypants"
 import SEO from "./SEO.astro"
 
@@ -7,11 +6,8 @@ export type Props = {
 	siteName: string
 	title?: string
 	description: string
-	image: {
-		src: string
-		alt: string
-	}
-	canonicalURL?: URL
+	image: { src: string; alt: string }
+	canonicalURL?: URL | null
 	pageType?: "website" | "article"
 }
 
@@ -25,19 +21,11 @@ const {
 	siteName,
 } = Astro.props as Props
 
-const resolvedImage = await getImage({
-	src: image.src,
+const resolvedImage = {
+	src: new URL(image.src, Astro.site).toString(),
 	alt: image.alt,
-	width: 1200,
-	aspectRatio: 2,
-	format: "jpeg",
-})
-
-if (!resolvedImage.src) {
-	throw new Error(`[BaseHead.astro] Could not resolve image "${image.src}"`)
 }
 
-const resolvedImageWithDomain = new URL(resolvedImage.src, Astro.url).toString()
 const title = [Astro.props.title, siteName].filter(Boolean).join(" | ")
 ---
 
@@ -46,7 +34,6 @@ const title = [Astro.props.title, siteName].filter(Boolean).join(" | ")
 <meta name="generator" content={Astro.generator} />
 <meta name="viewport" content="width=device-width" />
 <meta name="theme-color" content="#8D46E7" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="mask-icon" href="/favicon.svg" color="#8D46E7" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
@@ -57,8 +44,10 @@ const title = [Astro.props.title, siteName].filter(Boolean).join(" | ")
 	name={siteName}
 	title={title}
 	description={description}
-	image={{ src: resolvedImageWithDomain, alt: image.alt }}
+	image={resolvedImage}
 	twitter={{ handle: twitterHandle }}
 	og={{ type: pageType }}
 	canonicalURL={canonicalURL}
 />
+
+<slot />

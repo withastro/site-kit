@@ -1,8 +1,4 @@
 ---
-import "@astrojs/site-kit/assets/css/reset.css"
-import "@astrojs/site-kit/assets/css/theme.css"
-import { FullBleed } from "@astrojs/site-kit/components"
-
 export type Props = {
 	title: string
 }
@@ -16,11 +12,11 @@ const { title } = Astro.props
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title} | Astro</title>
+		<title>{title}</title>
 	</head>
 	<body>
-		<FullBleed as="main">
+		<main>
 			<slot />
-		</FullBleed>
+		</main>
 	</body>
 </html>
