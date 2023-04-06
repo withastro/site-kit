@@ -1,0 +1,55 @@
+---
+import "@astrojs/site-kit/tailwind.css"
+import "@fontsource/inter/variable.css"
+import "../styles/fonts.css"
+
+import { getCollection } from "astro:content"
+
+const samples = await getCollection("samples").then((entries) =>
+	entries.sort((a, b) => a.data.order - b.data.order),
+)
+---
+
+<html lang="en" class="bg-astro-gray-700 text-astro-gray-100">
+	<head>
+		<!-- Global Metadata -->
+		<meta charset="utf-8" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="theme-color" content="#8D46E7" />
+
+		<link rel="mask-icon" href="/favicon.svg" color="#8D46E7" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<title>Houstodex</title>
+	</head>
+	<body>
+		<main class="grid-container">
+			{
+				samples.map(async (sample) => {
+					const { title, prose } = sample.data
+					const { Content } = await sample.render()
+
+					return (
+						<fieldset>
+							<legend>{title}</legend>
+							<section class:list={{ prose }}>
+								<Content />
+							</section>
+						</fieldset>
+					)
+				})
+			}
+		</main>
+	</body>
+</html>
+
+<style>
+	fieldset {
+		@apply border border-astro-gray-300 rounded-lg p-4;
+	}
+
+	legend {
+		@apply px-2 font-obviously font-bold uppercase;
+	}
+</style>

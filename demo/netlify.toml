@@ -1,0 +1,11 @@
+[dev]
+  framework = "astro"
+
+[build]
+  command = "astro build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/fonts/*"
+  to = "https://fonts-cdn.astro.build/:splat"
+  status = 200
