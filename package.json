@@ -38,7 +38,7 @@
     "lint": "run-s --print-label --continue-on-error lint:*",
     "lint:prettier": "prettier --check --plugin-search-dir=. .",
     "lint:eslint": "eslint \"**/*.{js,ts,jsx,tsx,mjs,cjs,astro}\"",
-    "lint:typescript": "tsc --noEmit",
+    "lint:typescript": "tsc -b",
     "lint:astro": "cd src && astro check",
     "test": "playwright test",
     "test:e2e": "run-s test:install test:build test:preview",
