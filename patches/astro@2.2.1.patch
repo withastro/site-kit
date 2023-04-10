@@ -1,0 +1,13 @@
+diff --git a/dist/cli/check/index.js b/dist/cli/check/index.js
+index 9fb4245aad2bc35cf9d736995af44aa395fbfecf..eff073aad24eaf918df90aba65b6e39f61be71ff 100644
+--- a/dist/cli/check/index.js
++++ b/dist/cli/check/index.js
+@@ -241,7 +241,7 @@ ${dim("-")} `)
+ async function openAllDocuments(workspaceUri, filePathsToIgnore, checker) {
+   const files = await glob(ASTRO_GLOB_PATTERN, {
+     cwd: fileURLToPath(workspaceUri),
+-    ignore: ["node_modules/**"].concat(filePathsToIgnore.map((ignore) => `${ignore}/**`)),
++    ignore: ["**/node_modules/**"].concat(filePathsToIgnore.map((ignore) => `${ignore}/**`)),
+     absolute: true
+   });
+   for (const file of files) {

@@ -22,6 +22,7 @@ module.exports = {
     "@typescript-eslint/no-redeclare": "warn",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/triple-slash-reference": "off", // conflicts with astro check
     "no-console": ["error", { allow: ["warn", "error", "info"] }],
     "no-useless-rename": "error",
     "object-shorthand": "error",

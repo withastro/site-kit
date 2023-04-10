@@ -39,17 +39,16 @@
     "lint:prettier": "prettier --check --plugin-search-dir=. .",
     "lint:eslint": "eslint \"**/*.{js,ts,jsx,tsx,mjs,cjs,astro}\"",
     "lint:typescript": "tsc -b",
-    "lint:astro": "cd src && astro check",
+    "lint:astro": "astro check",
     "test": "playwright test",
-    "test:e2e": "run-s test:install test:build test:preview",
-    "test:install": "cd tests/fixture && pnpm i",
+    "test:e2e": "run-s test:build test:preview",
     "test:build": "astro build --root tests/fixture",
     "test:preview": "astro preview --root tests/fixture"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
-    "astro": "^2.1.8",
+    "astro": "^2.2.1",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-astro": "^0.26.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
@@ -71,5 +70,10 @@
   "peerDependencies": {
     "eslint": ">=8",
     "tailwindcss": ">=3.3"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "astro@2.2.1": "patches/astro@2.2.1.patch"
+    }
   }
 }
