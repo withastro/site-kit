@@ -25,7 +25,7 @@
   },
   "files": [
     "src",
-    ".eslintrc.js",
+    ".eslintrc.cjs",
     ".prettierrc.cjs",
     "tailwind.config.cjs",
     "tailwind.css",
