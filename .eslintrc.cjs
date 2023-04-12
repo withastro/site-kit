@@ -9,7 +9,6 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
-    project: "./tsconfig.json",
     extraFileExtensions: [".astro"],
   },
   rules: {
@@ -20,23 +19,38 @@ module.exports = {
       "error",
       { fixStyle: "inline-type-imports" },
     ],
-    "@typescript-eslint/no-floating-promises": "warn",
     "@typescript-eslint/no-redeclare": "warn",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/triple-slash-reference": "off", // conflicts with astro check
     "no-console": ["error", { allow: ["warn", "error", "info"] }],
     "no-useless-rename": "error",
     "object-shorthand": "error",
   },
   overrides: [
     {
+      files: ["*.ts", "*.tsx"],
+      parserOptions: {
+        project: "./tsconfig.json",
+      },
+      extends: [
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      ],
+      rules: {
+        "@typescript-eslint/no-floating-promises": "warn",
+      },
+    },
+    {
       files: ["*.astro"],
       parser: "astro-eslint-parser",
       parserOptions: {
         parser: "@typescript-eslint/parser",
         extraFileExtensions: [".astro"],
+        project: "./tsconfig.json",
       },
-      rules: {},
+      rules: {
+        "@typescript-eslint/no-floating-promises": "warn",
+      },
     },
   ],
 }

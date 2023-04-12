@@ -7,8 +7,8 @@ This is a collection of tooling configuration, styles, components and icons used
 1. Install the package from git and related dependencies:
 
    ```bash
-   pnpm i withastro/site-kit
-   pnpm i -D eslint prettier tailwindcss @astrojs/tailwindcss
+   pnpm i github:withastro/site-kit
+   pnpm i -D eslint prettier typescript tailwindcss @astrojs/tailwind
    ```
 
 1. Add `.eslintrc.cjs`:
