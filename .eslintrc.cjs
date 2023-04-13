@@ -52,5 +52,18 @@ module.exports = {
         "@typescript-eslint/no-floating-promises": "warn",
       },
     },
+    {
+      // Define the configuration for `<script>` tag.
+      // Script in `<script>` is assigned a virtual file name with the `.js` extension.
+      files: ["**/*.astro/*.js", "*.astro/*.js"],
+      env: {
+        browser: true,
+        es2020: true,
+      },
+      parser: "@typescript-eslint/parser",
+      parserOptions: {
+        project: "./tsconfig.json",
+      },
+    },
   ],
 }
