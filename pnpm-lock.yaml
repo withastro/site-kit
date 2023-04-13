@@ -16,8 +16,8 @@ importers:
         specifier: ^5.58.0
         version: 5.58.0(eslint@8.38.0)(typescript@5.0.4)
       astro:
-        specifier: ^2.2.1
-        version: 2.2.1(patch_hash=3yy5ewt2nbuttjeyfl7k3uudea)(@types/node@18.15.11)
+        specifier: ^2.2.3
+        version: 2.2.3
       eslint-config-prettier:
         specifier: ^8.8.0
         version: 8.8.0(eslint@8.38.0)
@@ -44,8 +44,8 @@ importers:
         specifier: ^2.26.1
         version: 2.26.1
       '@playwright/test':
-        specifier: ^1.32.2
-        version: 1.32.2
+        specifier: ^1.32.3
+        version: 1.32.3
       eslint:
         specifier: ^8.38.0
         version: 8.38.0
@@ -53,8 +53,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       playwright:
-        specifier: ^1.32.2
-        version: 1.32.2
+        specifier: ^1.32.3
+        version: 1.32.3
       prettier:
         specifier: ^2.8.7
         version: 2.8.7
@@ -139,6 +139,29 @@ packages:
     dependencies:
       '@astrojs/prism': 2.1.1
       astro: 2.2.1(patch_hash=3yy5ewt2nbuttjeyfl7k3uudea)(@types/node@18.15.11)
+      github-slugger: 1.5.0
+      import-meta-resolve: 2.2.2
+      rehype-raw: 6.1.1
+      rehype-stringify: 9.0.3
+      remark-gfm: 3.0.1
+      remark-parse: 10.0.1
+      remark-rehype: 10.1.0
+      remark-smartypants: 2.0.0
+      shiki: 0.11.1
+      unified: 10.1.2
+      unist-util-visit: 4.1.2
+      vfile: 5.3.7
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@astrojs/markdown-remark@2.1.3(astro@2.2.3):
+    resolution: {integrity: sha512-Di8Qbit9p7L7eqKklAJmiW9nVD+XMsNHpaNzCLduWjOonDu9fVgEzdjeDrTVCDtgrvkfhpAekuNXrp5+w4F91g==}
+    peerDependencies:
+      astro: ^2.2.0
+    dependencies:
+      '@astrojs/prism': 2.1.1
+      astro: 2.2.3
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -968,13 +991,13 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@playwright/test@1.32.2:
-    resolution: {integrity: sha512-nhaTSDpEdTTttdkDE8Z6K3icuG1DVRxrl98Qq0Lfc63SS9a2sjc9+x8ezysh7MzCKz6Y+nArml3/mmt+gqRmQQ==}
+  /@playwright/test@1.32.3:
+    resolution: {integrity: sha512-BvWNvK0RfBriindxhLVabi8BRe3X0J9EVjKlcmhxjg4giWBD/xleLcg2dz7Tx0agu28rczjNIPQWznwzDwVsZQ==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
       '@types/node': 18.15.11
-      playwright-core: 1.32.2
+      playwright-core: 1.32.3
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -1121,7 +1144,7 @@ packages:
       grapheme-splitter: 1.0.4
       ignore: 5.2.4
       natural-compare-lite: 1.4.0
-      semver: 7.3.8
+      semver: 7.4.0
       tsutils: 3.21.0(typescript@5.0.4)
       typescript: 5.0.4
     transitivePeerDependencies:
@@ -1195,7 +1218,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.3.8
+      semver: 7.4.0
       tsutils: 3.21.0(typescript@5.0.4)
       typescript: 5.0.4
     transitivePeerDependencies:
@@ -1216,7 +1239,7 @@ packages:
       '@typescript-eslint/typescript-estree': 5.58.0(typescript@5.0.4)
       eslint: 8.38.0
       eslint-scope: 5.1.1
-      semver: 7.3.8
+      semver: 7.4.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -1393,7 +1416,7 @@ packages:
       debug: 4.3.4
       eslint-visitor-keys: 3.4.0
       espree: 9.5.1
-      semver: 7.3.8
+      semver: 7.4.0
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -1471,6 +1494,79 @@ packages:
       - terser
     dev: false
     patched: true
+
+  /astro@2.2.3:
+    resolution: {integrity: sha512-Pd67ZBoYxqeyHCZ0UpdmDZYNgcs7JTwc0NMzUScrH4y2hjSY4S8iwmNUtd9pf65gkxMpEbqfvQj06kLzgi4HZg==}
+    engines: {node: '>=16.12.0', npm: '>=6.14.0'}
+    hasBin: true
+    peerDependencies:
+      sharp: ^0.31.3
+    peerDependenciesMeta:
+      sharp:
+        optional: true
+    dependencies:
+      '@astrojs/compiler': 1.3.1
+      '@astrojs/language-server': 0.28.3
+      '@astrojs/markdown-remark': 2.1.3(astro@2.2.3)
+      '@astrojs/telemetry': 2.1.0
+      '@astrojs/webapi': 2.1.0
+      '@babel/core': 7.21.4
+      '@babel/generator': 7.21.4
+      '@babel/parser': 7.21.4
+      '@babel/plugin-transform-react-jsx': 7.21.0(@babel/core@7.21.4)
+      '@babel/traverse': 7.21.4
+      '@babel/types': 7.21.4
+      '@types/babel__core': 7.20.0
+      '@types/yargs-parser': 21.0.0
+      acorn: 8.8.2
+      boxen: 6.2.1
+      chokidar: 3.5.3
+      ci-info: 3.8.0
+      common-ancestor-path: 1.0.1
+      cookie: 0.5.0
+      debug: 4.3.4
+      deepmerge-ts: 4.3.0
+      devalue: 4.3.0
+      diff: 5.1.0
+      es-module-lexer: 1.2.1
+      estree-walker: 3.0.3
+      execa: 6.1.0
+      fast-glob: 3.2.12
+      github-slugger: 2.0.0
+      gray-matter: 4.0.3
+      html-escaper: 3.0.3
+      kleur: 4.1.5
+      magic-string: 0.27.0
+      mime: 3.0.0
+      ora: 6.3.0
+      path-to-regexp: 6.2.1
+      preferred-pm: 3.0.3
+      prompts: 2.4.2
+      rehype: 12.0.1
+      semver: 7.4.0
+      server-destroy: 1.0.1
+      shiki: 0.11.1
+      slash: 4.0.0
+      string-width: 5.1.2
+      strip-ansi: 7.0.1
+      supports-esm: 1.0.0
+      tsconfig-resolver: 3.0.1
+      typescript: 5.0.4
+      unist-util-visit: 4.1.2
+      vfile: 5.3.7
+      vite: 4.2.1(@types/node@18.15.11)
+      vitefu: 0.2.4(vite@4.2.1)
+      yargs-parser: 21.1.1
+      zod: 3.21.4
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: false
 
   /astrojs-compiler-sync@0.3.2(@astrojs/compiler@1.3.1):
     resolution: {integrity: sha512-q/8Z30WNpsktLKS5NdT/6QAF9Q/C4ucLldqUpHgvRhuj/6jkJyOQfapQxkTKp8MK4RjH9sSsClfrTIdk8JZlKw==}
@@ -4007,19 +4103,19 @@ packages:
     dependencies:
       find-up: 4.1.0
 
-  /playwright-core@1.32.2:
-    resolution: {integrity: sha512-zD7aonO+07kOTthsrCR3YCVnDcqSHIJpdFUtZEMOb6//1Rc7/6mZDRdw+nlzcQiQltOOsiqI3rrSyn/SlyjnJQ==}
+  /playwright-core@1.32.3:
+    resolution: {integrity: sha512-SB+cdrnu74ZIn5Ogh/8278ngEh9NEEV0vR4sJFmK04h2iZpybfbqBY0bX6+BLYWVdV12JLLI+JEFtSnYgR+mWg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
 
-  /playwright@1.32.2:
-    resolution: {integrity: sha512-jHVnXJke0PXpuPszKtk9y1zZSlzO5+2a+aockT/AND0oeXx46FiJEFrafthurglLygVZA+1gEbtUM1C7qtTV+Q==}
+  /playwright@1.32.3:
+    resolution: {integrity: sha512-h/ylpgoj6l/EjkfUDyx8cdOlfzC96itPpPe8BXacFkqpw/YsuxkpPyVbzEq4jw+bAJh5FLgh31Ljg2cR6HV3uw==}
     engines: {node: '>=14'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      playwright-core: 1.32.2
+      playwright-core: 1.32.3
     dev: true
 
   /postcss-import@14.1.0(postcss@8.4.21):
@@ -4534,6 +4630,14 @@ packages:
 
   /semver@7.3.8:
     resolution: {integrity: sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      lru-cache: 6.0.0
+    dev: false
+
+  /semver@7.4.0:
+    resolution: {integrity: sha512-RgOxM8Mw+7Zus0+zcLEUn8+JfoLpj/huFTItQy2hsM4khuC1HYRDp0cU482Ewn/Fcy6bCjufD8vAj7voC66KQw==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
