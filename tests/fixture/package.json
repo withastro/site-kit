@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "prepare": "astro sync",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
@@ -11,7 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/site-kit": "link:../..",
-    "astro": "^2.1.7"
+    "@astrojs/site-kit": "workspace:*",
+    "astro": "^2.2.1"
   }
 }

@@ -2,10 +2,10 @@
 import smartypants from "smartypants"
 
 type SEOMetadata = {
-	name: string
+	name?: string
 	title: string
 	description: string
-	image: { src: string; alt: string }
+	image?: { src: string; alt: string }
 	canonicalURL?: URL | null
 	locale?: string
 }

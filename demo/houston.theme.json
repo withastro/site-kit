@@ -205,7 +205,10 @@
     },
     {
       "name": "java type",
-      "scope": ["storage.type.annotation.java", "storage.type.object.array.java"],
+      "scope": [
+        "storage.type.annotation.java",
+        "storage.type.object.array.java"
+      ],
       "settings": {
         "foreground": "#acafff"
       }
@@ -622,7 +625,11 @@
     },
     {
       "name": "Class name",
-      "scope": ["entity.name.class", "variable.other.class.js", "variable.other.class.ts"],
+      "scope": [
+        "entity.name.class",
+        "variable.other.class.js",
+        "variable.other.class.ts"
+      ],
       "settings": {
         "foreground": "#acafff"
       }
@@ -1420,7 +1427,10 @@
     },
     {
       "name": "go operator",
-      "scope": ["keyword.operator.arithmetic.go", "keyword.operator.address.go"],
+      "scope": [
+        "keyword.operator.arithmetic.go",
+        "keyword.operator.address.go"
+      ],
       "settings": {
         "foreground": "#54b9ff"
       }
