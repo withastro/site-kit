@@ -46,34 +46,29 @@
     "test:preview": "astro preview --root tests/fixture"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.58.0",
-    "@typescript-eslint/parser": "^5.58.0",
-    "astro": "^2.2.3",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
+    "astro": "^2.5.0",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-astro": "^0.26.1",
+    "eslint-plugin-astro": "^0.27.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier-plugin-astro": "^0.8.0",
-    "prettier-plugin-tailwindcss": "^0.2.7",
-    "smartypants": "^0.1.6"
+    "prettier-plugin-astro": "^0.8.1",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "smartypants": "^0.2.2"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
-    "@playwright/test": "^1.32.3",
-    "eslint": "^8.38.0",
+    "@playwright/test": "^1.33.0",
+    "eslint": "^8.40.0",
     "npm-run-all": "^4.1.5",
-    "playwright": "^1.32.3",
-    "prettier": "^2.8.7",
-    "tailwindcss": "^3.3.1",
+    "playwright": "^1.33.0",
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.3.2",
     "typescript": "^5.0.4"
   },
   "peerDependencies": {
     "eslint": ">=8",
     "tailwindcss": ">=3.3"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "astro@2.2.1": "patches/astro@2.2.1.patch"
-    }
   }
 }
