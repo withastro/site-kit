@@ -1,7 +1,7 @@
-const plugin = require('tailwindcss/plugin');
+import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
@@ -60,16 +60,16 @@ module.exports = {
 				header: '5rem',
 			},
 			lineHeight: {
-				prose: 1.8125,
+				prose: '1.8125',
 			},
 			maxWidth: {
 				prose: '70ch',
 			},
 			zIndex: {
-				'white-button-fill': -1,
-				noise: -2,
-				grid: -3,
-				blur: -4,
+				'white-button-fill': '-1',
+				noise: '-2',
+				grid: '-3',
+				blur: '-4',
 			},
 		},
 	},
@@ -271,4 +271,4 @@ module.exports = {
 			});
 		}),
 	],
-};
+} satisfies Config; 
