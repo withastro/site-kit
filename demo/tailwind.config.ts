@@ -1,1 +1,2 @@
-export { default } from '@astrojs/site-kit/tailwind';
+import config from '@astrojs/site-kit/tailwind';
+export default config;

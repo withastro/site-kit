@@ -246,11 +246,11 @@ export default {
 				'.bg-grid': {
 					// https://stackoverflow.com/a/32861765/1332403
 					backgroundSize: '20px 20px',
-					backgroundImage: `linear-gradient(to right, ${theme(
+					backgroundImage: `linear-gradient(to right, ${String(theme(
 						'colors.astro-gray.600',
-					)} 1px, transparent 1px),\n    linear-gradient(to bottom, ${theme(
+					))} 1px, transparent 1px),\n    linear-gradient(to bottom, ${String(theme(
 						'colors.astro-gray.600',
-					)} 1px, transparent 1px)`,
+					))} 1px, transparent 1px)`,
 					backgroundPosition: 'top center',
 					imageRendering: 'pixelated',
 
