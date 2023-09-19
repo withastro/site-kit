@@ -17,63 +17,77 @@
     "./assets/*": "./src/assets/*",
     "./components": "./src/components/index.ts",
     "./components/*": "./src/components/*",
-    "./eslint": "./.eslintrc.cjs",
-    "./prettier": "./.prettierrc.cjs",
+    "./eslint": "./eslint.config.cjs",
+    "./eslint.react": "./eslint.config.react.cjs",
+    "./prettier": "./prettier.config.mjs",
     "./typescript": "./tsconfig.json",
     "./tailwind": "./tailwind.config.cjs",
     "./tailwind.css": "./tailwind.css"
   },
   "files": [
     "src",
-    ".eslintrc.cjs",
-    ".prettierrc.cjs",
+    "eslint.config.cjs",
+    "eslint.config.react.cjs",
+    "prettier.config.mjs",
     "tailwind.config.cjs",
     "tailwind.css",
     "tsconfig.json"
   ],
   "scripts": {
-    "format": "run-s format:*",
-    "format:prettier": "prettier -w --plugin-search-dir=. .",
-    "format:eslint": "eslint --fix \"**/*.{js,ts,jsx,tsx,mjs,cjs,astro}\"",
-    "lint": "run-s --print-label --continue-on-error lint:*",
-    "lint:prettier": "prettier --check --plugin-search-dir=. .",
-    "lint:eslint": "eslint \"**/*.{js,ts,jsx,tsx,mjs,cjs,astro}\"",
-    "lint:typescript": "tsc -b",
+    "lint": "run-s --continue-on-error lint:*",
     "lint:astro": "astro check",
+    "lint:types": "tsc -b",
+    "lint:types-workspaces": "pnpm -r exec tsc -b",
+    "lint:eslint": "eslint . --cache --fix --report-unused-disable-directives",
+    "lint:prettier": "prettier . \"**/*.astro\" --cache --write --list-different",
     "test": "playwright test",
     "test:e2e": "run-s test:build test:preview",
     "test:build": "astro build --root tests/fixture",
     "test:preview": "astro preview --root tests/fixture"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.58.0",
-    "@typescript-eslint/parser": "^5.58.0",
-    "astro": "^2.2.3",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-astro": "^0.26.1",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "astro": "2.2.1",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-astro": "^0.29.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier-plugin-astro": "^0.8.0",
-    "prettier-plugin-tailwindcss": "^0.2.7",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier-plugin-astro": "^0.12.0",
+    "prettier-plugin-jsdoc": "^1.0.2",
+    "prettier-plugin-tailwindcss": "^0.5.4",
     "smartypants": "^0.1.6"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
     "@playwright/test": "^1.32.3",
-    "eslint": "^8.38.0",
+    "@types/eslint": "^8.44.2",
+    "eslint": "^8.49.0",
     "npm-run-all": "^4.1.5",
     "playwright": "^1.32.3",
-    "prettier": "^2.8.7",
-    "tailwindcss": "^3.3.1",
-    "typescript": "^5.0.4"
+    "prettier": "^3.0.3",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.2.2"
   },
   "peerDependencies": {
     "eslint": ">=8",
-    "tailwindcss": ">=3.3"
+    "prettier": ">=3",
+    "tailwindcss": ">=3.3",
+    "typescript": ">=5.2"
+  },
+  "peerDependenciesMeta": {
+    "tailwindcss": {
+      "optional": true
+    }
   },
   "pnpm": {
     "patchedDependencies": {
       "astro@2.2.1": "patches/astro@2.2.1.patch"
     }
+  },
+  "eslintConfig": {
+    "extends": [
+      "./eslint.config.cjs"
+    ]
   }
 }

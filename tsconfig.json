@@ -1,9 +1,8 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
+    "checkJs": true,
     "jsx": "preserve",
-    "skipLibCheck": true
-  },
-  "exclude": ["node_modules"],
-  "include": ["**/*", ".eslintrc.cjs"]
+    "exactOptionalPropertyTypes": false
+  }
 }

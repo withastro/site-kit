@@ -1,32 +1,32 @@
 ---
-import smartypants from "smartypants"
-import SEO from "./SEO.astro"
+import smartypants from 'smartypants';
+import SEO from './SEO.astro';
 
 export type Props = {
-	siteName: string
-	title?: string
-	description: string
-	image: { src: string; alt: string }
-	canonicalURL?: URL | null
-	pageType?: "website" | "article"
-}
+	siteName: string;
+	title?: string;
+	description: string;
+	image: { src: string; alt: string };
+	canonicalURL?: URL | null;
+	pageType?: 'website' | 'article';
+};
 
-const twitterHandle = "astrodotbuild"
+const twitterHandle = 'astrodotbuild';
 
 const {
 	description,
 	image,
 	canonicalURL = new URL(Astro.request.url, Astro.site),
-	pageType = "website",
+	pageType = 'website',
 	siteName,
-} = Astro.props as Props
+} = Astro.props;
 
 const resolvedImage = {
 	src: new URL(image.src, Astro.site).toString(),
 	alt: image.alt,
-}
+};
 
-const title = [Astro.props.title, siteName].filter(Boolean).join(" | ")
+const title = [Astro.props.title, siteName].filter(Boolean).join(' | ');
 ---
 
 <!-- Global Metadata -->
