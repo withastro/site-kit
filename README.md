@@ -61,10 +61,10 @@ Install dependencies:
 pnpm i -D tailwindcss @astrojs/tailwind
 ```
 
-Add `tailwind.config.cjs`:
+Add `tailwind.config.ts`:
 
-```js
-module.exports = require('@astrojs/site-kit/tailwind');
+```ts
+export { default } from '@astrojs/site-kit/tailwind'
 ```
 
 Add the tailwind integration, and disable base styles:
