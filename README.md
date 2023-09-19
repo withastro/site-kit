@@ -11,7 +11,7 @@ pnpm i github:withastro/site-kit
 pnpm i -D eslint prettier typescript npm-run-all @astrojs/check
 ```
 
-Update `package.json`:
+Update `package.json` (**The order of the scripts is important!**):
 
 ```json
 {
