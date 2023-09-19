@@ -21,6 +21,7 @@
     "./eslint.react": "./eslint.config.react.cjs",
     "./prettier": "./prettier.config.mjs",
     "./typescript": "./tsconfig.json",
+    "./tsconfig.json": "./tsconfig.json",
     "./tailwind": "./tailwind.config.cjs",
     "./tailwind.css": "./tailwind.css"
   },
