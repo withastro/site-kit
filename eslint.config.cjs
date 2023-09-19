@@ -72,6 +72,9 @@ module.exports = {
 		'@typescript-eslint/no-unsafe-argument': 'warn',
 		'@typescript-eslint/no-unsafe-assignment': 'warn',
 		'@typescript-eslint/no-import-type-side-effects': 'error',
-	"@typescript-eslint/prefer-nullish-coalescing": [ "warn", { "ignorePrimitives": { "string": true, "boolean": true } } ]
+		'@typescript-eslint/prefer-nullish-coalescing': [
+			'warn',
+			{ ignorePrimitives: { string: true, boolean: true } },
+		],
 	},
 };
