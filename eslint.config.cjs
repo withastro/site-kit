@@ -22,6 +22,12 @@ module.exports = {
 				parser: '@typescript-eslint/parser',
 				extraFileExtensions: ['.astro'],
 			},
+			rules: {
+				// this is currently broken in astro files
+				'@typescript-eslint/no-unsafe-assignment': 'off',
+				// astro JSX elements are `any`, which causes too many false-positives
+				'@typescript-eslint/no-unsafe-return': 'off',
+			},
 		},
 	],
 	parser: '@typescript-eslint/parser',
@@ -65,5 +71,6 @@ module.exports = {
 		'@typescript-eslint/no-unsafe-return': 'warn',
 		'@typescript-eslint/no-unsafe-argument': 'warn',
 		'@typescript-eslint/no-unsafe-assignment': 'warn',
+		'@typescript-eslint/no-import-type-side-effects': 'error',
 	},
 };

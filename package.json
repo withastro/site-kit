@@ -35,9 +35,9 @@
   ],
   "scripts": {
     "lint": "run-s --continue-on-error lint:*",
-    "lint:types-root": "tsc -b",
-    "lint:types": "pnpm -r exec tsc -b",
     "lint:astro": "astro check",
+    "lint:types": "tsc -b",
+    "lint:types-workspaces": "pnpm -r exec tsc -b",
     "lint:eslint": "eslint . --cache --fix --report-unused-disable-directives",
     "lint:prettier": "prettier . \"**/*.astro\" --cache --write --list-different",
     "test": "playwright test",
