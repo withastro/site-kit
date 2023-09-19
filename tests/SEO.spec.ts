@@ -9,7 +9,7 @@ type SEOMetadata = {
 	locale?: string;
 };
 type OpenGraph = Partial<SEOMetadata> & {
-	type?:           string     ;
+	type?: string;
 };
 type Twitter = Partial<SEOMetadata> & {
 	handle?: string;
