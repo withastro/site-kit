@@ -16,10 +16,10 @@ Update `package.json` (**The order of the scripts is important!**):
 ```json
 {
   "scripts": {
-    "lint": "run-s --continue-on-error lint:*",
+    "lint": "astro sync && run-s --continue-on-error lint:*",
+    "lint:eslint": "eslint . --cache --fix --report-unused-disable-directives",
     "lint:types": "tsc -b",
     "lint:astro": "astro check",
-    "lint:eslint": "eslint . --cache --fix --report-unused-disable-directives",
     "lint:prettier": "prettier . \"**/*.astro\" --cache --write --list-different"
   },
   "eslintConfig": {
