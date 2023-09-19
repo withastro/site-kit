@@ -39,7 +39,7 @@
     "lint:types": "pnpm -r exec tsc -b",
     "lint:astro": "astro check",
     "lint:eslint": "eslint . --cache --fix --report-unused-disable-directives",
-    "lint:prettier": "prettier . \"**/*.astro\" --cache --write",
+    "lint:prettier": "prettier . \"**/*.astro\" --cache --write --list-different",
     "test": "playwright test",
     "test:e2e": "run-s test:build test:preview",
     "test:build": "astro build --root tests/fixture",
