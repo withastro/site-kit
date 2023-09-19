@@ -75,5 +75,10 @@
     "patchedDependencies": {
       "astro@2.2.1": "patches/astro@2.2.1.patch"
     }
+	},
+	"eslintConfig": {
+		"extends": [
+			"./eslint.config.cjs"
+		]
   }
 }
