@@ -14,10 +14,10 @@ jobs:
     if: ${{ github.repository_owner == 'withastro' && github.event.issue.pull_request && startsWith(github.event.comment.body, '!snapshots') }}
     runs-on: ubuntu-latest
     steps:
-      - name: "Check if user has admin access (only admins can update test snapshots)."
-        uses: "lannonbr/repo-permission-check-action@2.0.0"
+      - name: 'Check if user has admin access (only admins can update test snapshots).'
+        uses: 'lannonbr/repo-permission-check-action@2.0.0'
         with:
-          permission: "admin"
+          permission: 'admin'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -38,8 +38,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          registry-url: "https://registry.npmjs.org"
-          cache: "pnpm"
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install

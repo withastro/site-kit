@@ -1,38 +1,38 @@
 ---
-import smartypants from "smartypants"
+import smartypants from 'smartypants';
 
 type SEOMetadata = {
-	name?: string
-	title: string
-	description: string
-	image?: { src: string; alt: string }
-	canonicalURL?: URL | null
-	locale?: string
-}
+	name?: string;
+	title: string;
+	description: string;
+	image?: { src: string; alt: string };
+	canonicalURL?: URL | null;
+	locale?: string;
+};
 type OpenGraph = Partial<SEOMetadata> & {
-	type?: string
-}
+	type?: string;
+};
 type Twitter = Partial<SEOMetadata> & {
-	handle?: string
-	card?: "summary" | "summary_large_image"
-}
+	handle?: string;
+	card?: 'summary' | 'summary_large_image';
+};
 
 export type Props = SEOMetadata & {
-	og?: OpenGraph
-	twitter?: Twitter
-}
+	og?: OpenGraph;
+	twitter?: Twitter;
+};
 
 const {
 	name,
 	description,
 	image,
-	locale = "en",
+	locale = 'en',
 	canonicalURL = new URL(Astro.url.pathname, Astro.site),
 	og: _og = {},
 	twitter: _twitter = {},
-} = Astro.props as Props
+} = Astro.props;
 
-const title = [Astro.props.title, name].filter(Boolean).join(" | ")
+const title = [Astro.props.title, name].filter(Boolean).join(' | ');
 
 const og: OpenGraph = {
 	name,
@@ -41,9 +41,9 @@ const og: OpenGraph = {
 	canonicalURL,
 	image,
 	locale,
-	type: "website",
+	type: 'website',
 	..._og,
-}
+};
 const twitter: Twitter = {
 	name,
 	title,
@@ -51,12 +51,11 @@ const twitter: Twitter = {
 	canonicalURL,
 	image,
 	locale,
-	card: "summary_large_image",
+	card: 'summary_large_image',
 	..._twitter,
-}
+};
 
-const ensureTrailingSlash = (url: string | URL) =>
-	url.toString().replace(/\/$/, "") + "/"
+const ensureTrailingSlash = (url: string | URL) => url.toString().replace(/\/$/, '') + '/';
 ---
 
 <!-- Global Metadata -->
@@ -72,22 +71,14 @@ const ensureTrailingSlash = (url: string | URL) =>
 
 <!-- Page Metadata -->
 <meta name="generator" content={Astro.generator} />
-{
-	canonicalURL && (
-		<link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />
-	)
-}
+{canonicalURL && <link rel="canonical" href={ensureTrailingSlash(canonicalURL)} />}
 <title>{title}</title>
 <meta name="description" content={description} />
 
 <!-- OpenGraph Tags -->
 <meta property="og:title" content={og.title} />
 <meta property="og:type" content={og.type} />
-{
-	og.canonicalURL && (
-		<meta property="og:url" content={ensureTrailingSlash(og.canonicalURL)} />
-	)
-}
+{og.canonicalURL && <meta property="og:url" content={ensureTrailingSlash(og.canonicalURL)} />}
 <meta property="og:locale" content={og.locale} />
 <meta property="og:description" content={og.description} />
 <meta property="og:site_name" content={og.name} />

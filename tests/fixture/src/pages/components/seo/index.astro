@@ -1,18 +1,18 @@
 ---
-import path from "node:path"
-import Layout from "../../../layouts/Base.astro"
+import path from 'node:path';
+import Layout from '../../../layouts/Base.astro';
 
-const components = await Astro.glob("./*.astro")
+const components = await Astro.glob('./*.astro');
 
 type Route = {
-	href: string
-	text: string
-}
+	href: string;
+	text: string;
+};
 
 const componentRoutes = components.map(({ url }) => ({
 	href: url!,
 	text: path.basename(url!),
-}))
+}));
 ---
 
 <Layout title="Site Kit">

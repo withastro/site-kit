@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content"
+import { defineCollection, z } from 'astro:content';
 
 export const collections = {
 	samples: defineCollection({
@@ -8,4 +8,4 @@ export const collections = {
 			order: z.number(),
 		}),
 	}),
-}
+};

@@ -1,13 +1,13 @@
 ---
-import "@astrojs/site-kit/tailwind.css"
-import "@fontsource/inter/variable.css"
-import "../styles/fonts.css"
+import '@astrojs/site-kit/tailwind.css';
+import '@fontsource/inter/variable.css';
+import '../styles/fonts.css';
 
-import { getCollection } from "astro:content"
+import { getCollection } from 'astro:content';
 
-const samples = await getCollection("samples").then((entries) =>
+const samples = await getCollection('samples').then((entries) =>
 	entries.sort((a, b) => a.data.order - b.data.order),
-)
+);
 ---
 
 <html lang="en" class="bg-astro-gray-700 text-astro-gray-100">
@@ -27,8 +27,8 @@ const samples = await getCollection("samples").then((entries) =>
 		<main class="grid-container">
 			{
 				samples.map(async (sample) => {
-					const { title, prose } = sample.data
-					const { Content } = await sample.render()
+					const { title, prose } = sample.data;
+					const { Content } = await sample.render();
 
 					return (
 						<fieldset>
@@ -37,7 +37,7 @@ const samples = await getCollection("samples").then((entries) =>
 								<Content />
 							</section>
 						</fieldset>
-					)
+					);
 				})
 			}
 		</main>

@@ -9,12 +9,12 @@ order: 3
 ```astro
 ---
 // Your component script here!
-import Banner from "../components/Banner.astro"
-import ReactPokemonComponent from "../components/ReactPokemonComponent.jsx"
+import Banner from '../components/Banner.astro';
+import ReactPokemonComponent from '../components/ReactPokemonComponent.jsx';
 const myFavoritePokemon = [
   /* ... */
-]
-const { title } = Astro.props
+];
+const { title } = Astro.props;
 ---
 
 <!-- HTML comments supported! -->{/* JS comment syntax is also valid! */}
@@ -34,13 +34,13 @@ const { title } = Astro.props
 </ul>
 
 <!-- Use a template directive to build class names from multiple strings or even objects! -->
-<p class:list={["add", "dynamic", { classNames: true }]}></p>
+<p class:list={['add', 'dynamic', { classNames: true }]}></p>
 ```
 
 ## HTML
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -73,15 +73,15 @@ main {
 
 ```js
 function isString(path) {
-  return typeof path === "string" || path instanceof String
+  return typeof path === 'string' || path instanceof String;
 }
 
 export function trimSlashes(path) {
-  return path.replace(/^\/|\/$/g, "")
+  return path.replace(/^\/|\/$/g, '');
 }
 
 export function joinPaths(...paths) {
-  return `/${paths.filter(isString).map(trimSlashes).join("/")}`
+  return `/${paths.filter(isString).map(trimSlashes).join('/')}`;
 }
 ```
 
@@ -89,14 +89,14 @@ export function joinPaths(...paths) {
 
 ```ts
 function isString(path: unknown): path is string {
-  return typeof path === "string" || path instanceof String
+  return typeof path === 'string' || path instanceof String;
 }
 
 export function trimSlashes(path: string) {
-  return path.replace(/^\/|\/$/g, "")
+  return path.replace(/^\/|\/$/g, '');
 }
 
 export function joinPaths(...paths: (string | undefined)[]) {
-  return `/${paths.filter(isString).map(trimSlashes).join("/")}`
+  return `/${paths.filter(isString).map(trimSlashes).join('/')}`;
 }
 ```

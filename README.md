@@ -15,14 +15,14 @@ This is a collection of tooling configuration, styles, components and icons used
 
    ```js
    module.exports = {
-     extends: [require.resolve("@astrojs/site-kit/eslint")],
-   }
+     extends: [require.resolve('@astrojs/site-kit/eslint')],
+   };
    ```
 
 1. Add `.prettierrc.cjs`:
 
    ```js
-   module.exports = require("@astrojs/site-kit/prettier")
+   module.exports = require('@astrojs/site-kit/prettier');
    ```
 
 1. Add `.prettierignore`:
@@ -35,14 +35,14 @@ This is a collection of tooling configuration, styles, components and icons used
 1. Add `tailwind.config.cjs`:
 
    ```js
-   module.exports = require("@astrojs/site-kit/tailwind")
+   module.exports = require('@astrojs/site-kit/tailwind');
    ```
 
 1. Add the tailwind integration, and disable base styles:
 
    ```js
-   import { defineConfig } from "astro/config"
-   import tailwind from "@astrojs/tailwind"
+   import { defineConfig } from 'astro/config';
+   import tailwind from '@astrojs/tailwind';
 
    export default defineConfig({
      integrations: [
@@ -52,14 +52,14 @@ This is a collection of tooling configuration, styles, components and icons used
          },
        }),
      ],
-   })
+   });
    ```
 
 1. Import tailwind in your base layout component:
 
    ```astro
    ---
-   import "@astrojs/site-kit/tailwind.css"
+   import '@astrojs/site-kit/tailwind.css';
    // ...
    ---
    ```
