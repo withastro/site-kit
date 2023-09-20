@@ -23,6 +23,7 @@
     "./typescript": "./tsconfig.json",
     "./tsconfig.json": "./tsconfig.json",
     "./tailwind": "./tailwind.config.mjs",
+    "./tailwind-preset": "./tailwind-preset.mjs",
     "./tailwind.css": "./tailwind.css"
   },
   "files": [
@@ -31,6 +32,7 @@
     "eslint.config.react.cjs",
     "prettier.config.mjs",
     "tailwind.config.mjs",
+    "tailwind-preset.mjs",
     "tailwind.css",
     "tsconfig.json"
   ],
