@@ -1,6 +1,6 @@
-import type { Config } from 'tailwindcss';
-import plugin from 'tailwindcss/plugin';
+import plugin from 'tailwindcss/plugin.js';
 
+/** @type {import('tailwindcss').Config} */
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
@@ -80,7 +80,7 @@ export default {
 		// adds a `s-*` utility to apply the same width and height
 		plugin(function sizePlugin(api) {
 			api.matchUtilities(
-				{ s: (value) => ({ width: value, height: value }) },
+				{ s: (value) => ({ width: String(value), height: String(value) }) },
 				{ values: api.theme('width') },
 			);
 		}),
@@ -271,4 +271,4 @@ export default {
 			});
 		}),
 	],
-} satisfies Config;
+};
