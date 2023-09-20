@@ -5,12 +5,13 @@ import type { Config } from 'tailwindcss';
  *
  *   ```js
  *   import preset from '@astrojs/site-kit/tailwind-preset';
+ *   import type { Config } from 'tailwindcss';
  *   export default {
- *   	presets: [preset],
- *   	content: ['...'],
- *   	// your customizations here
- *   };
- *   ```
+ *   presets: [preset],
+ *   content: ['...'],
+ *   // your customizations here
+ *   } satisfies Config;
+ * ```
  */
 const config: Config;
 export default config;
