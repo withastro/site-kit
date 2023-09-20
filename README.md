@@ -79,7 +79,7 @@ export default defineConfig({
 Add the preset to your `tailwind.config.ts`:
 
 ```ts
-import preset from from '@astrojs/site-kit/tailwind-preset';
+import preset from '@astrojs/site-kit/tailwind-preset';
 
 export default {
   content: ['./src/**/*.{astro,js,ts,jsx,tsx}'],
