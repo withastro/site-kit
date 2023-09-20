@@ -61,12 +61,6 @@ Install dependencies:
 pnpm i -D tailwindcss @astrojs/tailwind
 ```
 
-Add `tailwind.config.ts`:
-
-```ts
-export { default } from '@astrojs/site-kit/tailwind';
-```
-
 Add the tailwind integration, and disable base styles:
 
 ```js
@@ -80,6 +74,17 @@ export default defineConfig({
     }),
   ],
 });
+```
+
+Add the preset to your `tailwind.config.ts`:
+
+```ts
+import preset from from '@astrojs/site-kit/tailwind-preset';
+
+export default {
+  content: ['./src/**/*.{astro,js,ts,jsx,tsx}'],
+  presets: [preset],
+};
 ```
 
 Import tailwind.css in your base layout component:
