@@ -1,6 +1,6 @@
 import plugin from 'tailwindcss/plugin.js';
 
-/** @type {import('tailwindcss').Config} */
+/** @satisfies {import('tailwindcss').Config} */
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
