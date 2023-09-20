@@ -1,7 +1,7 @@
-const plugin = require('tailwindcss/plugin');
+import plugin from 'tailwindcss/plugin.js';
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+/** @satisfies {import('tailwindcss').Config} */
+export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
@@ -60,16 +60,16 @@ module.exports = {
 				header: '5rem',
 			},
 			lineHeight: {
-				prose: 1.8125,
+				prose: '1.8125',
 			},
 			maxWidth: {
 				prose: '70ch',
 			},
 			zIndex: {
-				'white-button-fill': -1,
-				noise: -2,
-				grid: -3,
-				blur: -4,
+				'white-button-fill': '-1',
+				noise: '-2',
+				grid: '-3',
+				blur: '-4',
 			},
 		},
 	},
@@ -80,7 +80,7 @@ module.exports = {
 		// adds a `s-*` utility to apply the same width and height
 		plugin(function sizePlugin(api) {
 			api.matchUtilities(
-				{ s: (value) => ({ width: value, height: value }) },
+				{ s: (value) => ({ width: String(value), height: String(value) }) },
 				{ values: api.theme('width') },
 			);
 		}),
@@ -246,10 +246,10 @@ module.exports = {
 				'.bg-grid': {
 					// https://stackoverflow.com/a/32861765/1332403
 					backgroundSize: '20px 20px',
-					backgroundImage: `linear-gradient(to right, ${theme(
-						'colors.astro-gray.600',
-					)} 1px, transparent 1px),\n    linear-gradient(to bottom, ${theme(
-						'colors.astro-gray.600',
+					backgroundImage: `linear-gradient(to right, ${String(
+						theme('colors.astro-gray.600'),
+					)} 1px, transparent 1px),\n    linear-gradient(to bottom, ${String(
+						theme('colors.astro-gray.600'),
 					)} 1px, transparent 1px)`,
 					backgroundPosition: 'top center',
 					imageRendering: 'pixelated',
