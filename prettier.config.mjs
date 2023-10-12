@@ -1,4 +1,4 @@
-/** @type {import('prettier').Config} */
+/** @satisfies {import('prettier').Config} */
 export default {
 	printWidth: 100,
 	semi: true,
@@ -9,6 +9,7 @@ export default {
 	plugins: [
 		'prettier-plugin-astro',
 		'prettier-plugin-jsdoc',
+		'prettier-plugin-organize-imports',
 		'prettier-plugin-tailwindcss', // must be last
 	],
 	overrides: [
