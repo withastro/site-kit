@@ -1,4 +1,4 @@
-/** @type {import('prettier').Config} */
+/** @satisfies {import('prettier').Config} */
 export default {
 	printWidth: 100,
 	semi: true,

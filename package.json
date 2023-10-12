@@ -19,7 +19,10 @@
     "./components/*": "./src/components/*",
     "./eslint": "./eslint.config.cjs",
     "./eslint.react": "./eslint.config.react.cjs",
-    "./prettier": "./prettier.config.mjs",
+    "./prettier": {
+      "default": "./prettier.config.mjs",
+      "types": "./prettier.d.ts"
+    },
     "./typescript": "./tsconfig.json",
     "./tsconfig.json": "./tsconfig.json",
     "./tailwind": "./tailwind.config.mjs",
